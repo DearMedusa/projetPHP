@@ -16,7 +16,7 @@ class User extends Model{
     
     
     public function list(){
-        return $this->hasMany('\PHPProject\models\List', 'user_id')->get();
+        return $this->hasMany('\PHPProject\models\Liste', 'user_id')->get();
     }
 }
 
