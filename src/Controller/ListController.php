@@ -4,9 +4,9 @@
 
   require_once 'vendor/autoload.php';
 
-  use \mywishlist\models\List as List;  // A voir pous "as"
-  use \mywishlist\models\User as User;  // A voir pous "as"
-  use \mywishlist\view\ListView as ListView;  // A voir pous "as"
+  use \PHPProject\models\Liste as Liste;
+  use \PHPProject\models\User as User;
+  use \PHPProject\view\ListView as ListView;  // A voir pous "as"
 
   class ListController{
     
@@ -15,35 +15,31 @@
       $view = new ListView();
       $user = AccountController::getCurrentUser();
 
-      $liste = new List();
-      $wishlist->user_id = $user->id_account;
-      $wishlist->titre =  $_POST['nom_liste'];
-      $wishlist->description = $_POST['dexcription_liste'];
+      $liste = new Liste();
+      $liste->user_id = $user->id_account;
+      $liste->titre =  $_POST['nom_liste'];//nom_liste = nom du bouton
+      $liste->description = $_POST['description_liste'];
 
       $list->save(){
-        $view->affichage($list, $user)
+      $view->affichageListe($list, $user);//ListeView.affichageListe();
       }
     }
     
-    //edition de liste
+    //edition de liste (LVL 2)
     public function editList(){
-    // a voir plus tard
+      // a voir plus tard
     }
     
-
-    
     //affichage de liste
-    public function affichageList($id){
+    public function affichageListe($id){
       //appel de listView avec en parametre la liste qui correspond à l'id $id
       $view = new ListView();
       $view->affichageList(List::where('no','=',$id)->first())
     }
 
-
-    public function supprimerList($id){
+    public function supprimerListe($id){
     $view = new ListView();
-    $list = List::where('no','=',$id)->first();
-    
+    $list = Liste::where('no','=',$id)->first();
     $list->delete());
     }
   }
