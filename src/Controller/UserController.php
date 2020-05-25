@@ -18,6 +18,12 @@ class UserController{
 		return $user;
 	}
 
+	function connect() {
+		$login = $_POST['connect'];
+		$acc = User::where('login', '=', strtolower($login))->first();//affiche le compte correspondant au login
+	  }
+	
+
 }
 
 ?> 
