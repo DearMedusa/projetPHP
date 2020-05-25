@@ -29,6 +29,12 @@
     public function editList(){
       // a voir plus tard
     }
+
+    //retourne le proprietaire de la liste
+    public function getListUser($id){
+      $liste = Liste::where('no','=', $id)->first();
+      return $liste->user_id; 
+    }
     
     //affichage de liste
     public function affichageListe($id){
