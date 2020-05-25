@@ -23,5 +23,4 @@ class ItemView{
  	$this->addContent($content);
 	}
 
-
 }
