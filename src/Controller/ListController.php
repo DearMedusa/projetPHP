@@ -20,9 +20,9 @@
       $liste->titre =  $_POST['nom_liste'];//nom_liste = nom du bouton
       $liste->description = $_POST['description_liste'];
 
-      $list->save(){
-      $view->affichageListe($list, $user);//ListeView.affichageListe();
-      }
+      $list->save();
+      $view->affichageListe($list);//ListeView.affichageListe();
+      
     }
     
     //edition de liste (LVL 2)
@@ -34,13 +34,13 @@
     public function affichageListe($id){
       //appel de listView avec en parametre la liste qui correspond à l'id $id
       $view = new ListView();
-      $view->affichageList(List::where('no','=',$id)->first())
+      $view->affichageListe(Liste::where('no','=', $id)->first());
     }
 
     public function supprimerListe($id){
     $view = new ListView();
     $list = Liste::where('no','=',$id)->first();
-    $list->delete());
+    $list->delete();
     }
   }
 
