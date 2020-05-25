@@ -16,7 +16,7 @@ class Item extends Model{
     public $timestamps = false;
     
      public function list(){
-    	return $this->belongsTo('\PHPProject\models\list','list_id')->first();
+    	return $this->belongsTo('\PHPProject\models\List','list_id')->first();
      }
 }
 ?>
