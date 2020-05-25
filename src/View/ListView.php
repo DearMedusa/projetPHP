@@ -6,7 +6,12 @@ use \PHPProject\Controller\UserController as AccountController;
 
 class ListView{
 
-	public function affichageList($list){
+	public function affichageListe($liste){
 		$app = \Slim\Slim::getInstance();
+		echo('Titre : '.$liste["titre"]."</br>");
+		echo('Description : '.$liste["description"]."</br>");
+		echo('Date limite : '.$liste["expiration"]."</br>");
+		echo('Token : '.$liste["token"]."</br>");
 	}
+
 }
