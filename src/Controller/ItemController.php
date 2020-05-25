@@ -2,12 +2,12 @@
   
   namespace PHPProject\Controller;
 
-  use \mywishlist\models\Item as Item;
-  use \mywishlist\models\WishList as WishList;
-  use \mywishlist\view\ItemView as ItemView;
-  use \mywishlist\models\Account as Account;
-  use \mywishlist\view\ListView as ListView;
-  use \mywishlist\controller\AccountController as AccountController;
+  use \PHPProject\models\Item as Item;
+  use \PHPProject\models\Liste as Liste;
+  use \PHPProject\view\ItemView as ItemView;
+  use \PHPProject\models\User as User;
+  use \PHPProject\view\ListView as ListView;
+  use \PHPProject\controller\UserController as UserController;
 
   class ItemController{
 
@@ -18,7 +18,6 @@
       $view = new ItemView();
       $view->affichageItem($item);
   }
-
 
   function creerItem($list_id){
   	 $view = new ItemView();
