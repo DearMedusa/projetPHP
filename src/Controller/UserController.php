@@ -13,8 +13,6 @@ class UserController{
 	    UserView::EnteteUser();
 	}
 
-
-
 	static function getUser($id){  // voir comment palier session() !!!!!!
 		$user = User::select('login')->where ('id','=', 1)->get();
 		return $user;
