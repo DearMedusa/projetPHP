@@ -2,21 +2,21 @@
   
 namespace PHPProject\Controller;
 
-use \mywishlist\models\Account as Account;
-use \mywishlist\view\AccountView as AccountView;
+use \PHPProject\models\User as User;
+use \PHPProject\view\UserView as UserView;
 
 
 class UserController{
 
 	static function EnteteUser(){
 		$content = "";
-	    UserView::EnteteUser(UserController::getUser());
+	    UserView::EnteteUser();
 	}
 
 
 
 	static function getUser($id){  // voir comment palier session() !!!!!!
-		$user = Account::where('user_id','=', 1)->first();
+		$user = User::select('login')->where ('id','=', 1)->get();
 		return $user;
 	}
 
