@@ -7,7 +7,7 @@ require_once './vendor/autoload.php';
 
 use \Illuminate\Database\Eloquent\Model;
 
-class Liste extends Model{
+class List extends Model{
 
     protected $table = 'liste';
     protected $primaryKey = 'no';
