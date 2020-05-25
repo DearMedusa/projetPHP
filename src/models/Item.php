@@ -6,7 +6,7 @@ namespace ProjetPHP\models;
 require_once './vendor/autoload.php';
 
 use \Illuminate\Database\Eloquent\Model;
-use \ProjetPhp\models\liste;
+use \PHPProject\models\Liste;
 
 
 class Item extends Model{
