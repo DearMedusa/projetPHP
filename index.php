@@ -8,6 +8,7 @@ require_once 'vendor/autoload.php';
   use PHPProject\Controller\UserController;
   use PHPProject\Controller\ItemController;
 
+  use PHPProject\View\Outils;
 
   // Base de données
   use Illuminate\Database\Capsule\Manager as DB;
@@ -22,13 +23,15 @@ require_once 'vendor/autoload.php';
   //Slim
   $app = new \Slim\Slim();
 
+  Outils::HeaderHTML("Wishlist");//feature à tester
+
   // Affichage de l'interface de connexion
   $app->get('/', function(){  //get ou post
     $uc=new UserController();
     $uc::EnteteUser(UserController::getUser(0));//nous affiche le user 1 (le parametre est useless)
   })->name('home');
 
-  // Affichage de la liste id = 1
+  // Affichage de la liste id = 1, NE FONCTIONNE PAS
   $app->get('/liste', function(){  //get ou post
     $lc=new ListController();
     $lc::affichageListe(1);
