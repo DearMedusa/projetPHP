@@ -25,7 +25,7 @@ require_once 'vendor/autoload.php';
   // Affichage de l'interface de connexion
   $app->get('/', function(){  //get ou post
     $uc=new UserController();
-    $uc::EnteteUser(UserController::getUser(0));
+    $uc::EnteteUser(UserController::getUser(0));//nous affiche le user 1 (le parametre est useless)
   })->name('home');
 
   // Affichage de la liste id = 1

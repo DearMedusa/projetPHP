@@ -14,7 +14,7 @@
 
         $content .= "    <input type='submit' value='Connexion'>\n";
 
-        $content .= "    <a id='inscriptionLink' href='".$app->urlFor('')."'>Inscription</a>\n";
+        $content .= "    <a id='inscriptionLink' href='".$app->urlFor('home')."'>Inscription</a>\n";
         $content .= "  </form>\n";
         echo $content;
   	}
