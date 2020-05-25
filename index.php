@@ -4,7 +4,7 @@
 require_once 'vendor/autoload.php';
   
   //Imports
-  use PHPProject\Controller\listController;
+  use PHPProject\Controller\ListController;
   use PHPProject\Controller\UserController;
   use PHPProject\Controller\ItemController;
 
@@ -17,21 +17,22 @@ require_once 'vendor/autoload.php';
   $db->bootEloquent();
 
   //Eloquent
-  
   session_start();
-
 
   //Slim
   $app = new \Slim\Slim();
 
-
-
-  //Affichage de listes
-$app->get('/', function(){  //get ou post
-   $uc=new UserController();
+  // Affichage de l'interface de connexion
+  $app->get('/', function(){  //get ou post
+    $uc=new UserController();
     $uc::EnteteUser(UserController::getUser(0));
   })->name('home');
-  
+
+  // Affichage de la liste id = 1
+  $app->get('/liste', function(){  //get ou post
+    $lc=new ListController();
+    $lc::affichageListe(1);
+   })->name('liste_aff');
   
   $app->run();
 
