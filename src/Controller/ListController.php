@@ -1,5 +1,10 @@
 
 <?php
+  require_once 'vendor/autoload.php';
+
+  use \mywishlist\models\List as List;
+  use \mywishlist\models\User as User;
+  use \mywishlist\view\ListView as ListView;
 
   class ListController{
     
