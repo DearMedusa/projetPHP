@@ -1,7 +1,7 @@
 
 <?php
 
-namespace ProjetPHP\models;
+namespace PHPProject\models;
 
 require_once './vendor/autoload.php';
 
