@@ -13,11 +13,14 @@ class ListView{
 		ListController::getListUser($user->id);//on recupere 
 		$liste = Liste::select('*')->where ('user_id','=', $user->id)->get();//RETOURNE UN TABLEAU D'OBJETS
 		
-		echo("<h1> Liste(s) de ".$user->login."</h1>");//retourne le nom de l'utilisateur de la liste
-		echo('Titre : '.$liste[0]->titre."</br>");
-		echo('Description : '.$liste[0]->description."</br>");
-		echo('Date limite : '.$liste[0]->expiration."</br>");
-		echo('Token : '.$liste[0]->token."</br>");
+		$max = count($liste);
+		for ($i = 0; $i < $max; $i++) {
+			echo("<h1> Liste(s) de ".$user->login."</h1>");//retourne le nom de l'utilisateur de la liste
+			echo('Titre : '.$liste[$i]->titre."</br>");
+			echo('Description : '.$liste[$i]->description."</br>");
+			echo('Date limite : '.$liste[$i]->expiration."</br>");
+			echo('Token : '.$liste[$i]->token."</br>");
+		}
 	}
 
 }
