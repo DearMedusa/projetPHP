@@ -4,6 +4,7 @@
 
   use \PHPProject\models\Liste as Liste;
   use \PHPProject\models\User as User;
+  use \PHPProject\models\Item as Item;
   use \PHPProject\View\ListView as ListView;  // A voir pous "as"
 
   class ListController{
@@ -28,16 +29,23 @@
       // a voir plus tard
     }
 
-    public function getListUser($id){
-      $liste = Liste::where('no','=', $id)->first();
+    public function getListUser($idList){
+      $liste = Liste::where('no','=', $idList)->first();
       return $liste->user_id; 
     }
 
+    //cette fonction nous permet d'afficher les items d'une liste sans connaitre le user
+    /*public function getItems($idList) {// A TESTER---------------------------------------
+      $item = Item::where('liste_id','=', $idList)->get();
+      return $item; 
+    }*/
+
+
     //affichage de liste
-    public function affichageListe($id){
+    public function affichageListe($idUser){
       //appel de listView avec en parametre la liste qui correspond à l'id $id
       $view = new ListView();
-      $view->affichageListe(User::where('id','=', $id)->first());
+      $view->affichageListe(User::where('id','=', $idUser)->first());
     }
 
     // Suppression de liste

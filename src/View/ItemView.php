@@ -9,18 +9,18 @@ class ItemView{
 
 	function affichageItem($item){
       $app = \Slim\Slim::getInstance();
-      $content = "";
 
+      $max = count($item);
+	for ($i = 0; $i < $max; $i++) {
+            echo("<img src=".$item[$i]->img."></br>");
+		echo('Nom : '.$item[$i]->nom."</br>");
+		echo('Description : '.$item[$i]->descr."</br>");
+            echo('Tarif : '.$item[$i]->tarif."€ </br>");
+            echo("</br>");
+            echo("<input type='submit' value='Supprimer'>");
+            echo("<input type='submit' value='Reserver'></br>");
+		}
 
-      $content .= "\n<!-- Item -->\n";
-      if (isset($item->img)) $content .= "<img src='./img/item/$item->img' class='img-item' alt='Image : $item->nom'>\n";
-      $content .= "<h1> $item->nom </h1>\n";
-      $content .= "<p class='description-item'> $item->descr </p>\n";
-      $content .= "<p> Tarif : $item->tarif € </p>\n";
-      if (isset($item->url)) $content .= "<p> Plus d'infos : <a href='$item->url' target=_blank> $item->url </a></p>\n";
-
-      $content .= "\n<!-- Actions -->\n";
-      //$this->addContent($content);
 	}
 
 }

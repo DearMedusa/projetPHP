@@ -12,7 +12,6 @@ class ListView{
 		$app = \Slim\Slim::getInstance();
 		ListController::getListUser($user->id);//on recupere 
 		$liste = Liste::select('*')->where ('user_id','=', $user->id)->get();//RETOURNE UN TABLEAU D'OBJETS
-		
 		$max = count($liste);
 		for ($i = 0; $i < $max; $i++) {
 			echo("<h1> Liste(s) de ".$user->login."</h1>");//retourne le nom de l'utilisateur de la liste
@@ -27,7 +26,7 @@ class ListView{
 			$add = $app->urlFor('addList');
 
             $boutonAfficher = " <form name=\"afficher\" method=\"GET\" action =\"affList\"> <input type='submit' value='Afficher Liste'> </form>\n";
-            $aff = $app->urlFor('affList');
+            $aff = $app->urlFor('affList');//j'essaie de passer l'information: "quelle est la liste qu'on est en train de regarder"
 
       		/*echo "<form method='GET' action='$action'>
             <select name='user'>

@@ -49,7 +49,7 @@ require_once 'vendor/autoload.php';
     //$lc::ajouterList();
   })->name('addList');
 
-  $app->get('/inscription', function(){//NE FONCTIONNE PAS (trop)
+  $app->get('/inscription', function(){
     $slim = \Slim\Slim::getInstance();
     $al = new UserController();
     $al::inscription();
@@ -57,11 +57,13 @@ require_once 'vendor/autoload.php';
 
   $app->get('/affList', function(){//NE FONCTIONNE PAS (trop) ------------------------------
     $slim = \Slim\Slim::getInstance();
+    //$list = Liste::where('id','=', $id)->first();
+    //on veut afficher la liste qui correspond à l'user actuel
+    //tout le pb réside ds le fait qu'on a aucun moyen de connaitre
+    //le user actuel...
     $aff = new ItemController();
-    $aff::affichageItem(1);//marche pas
-
-  })->name('affList');
-
+    $aff::affichageItem(2);
+  })->name('affList');//mais quand on appuis sur le bouton 'afficher liste'....on est déja dans une liste précise !
 
   $app->run();
 
