@@ -25,15 +25,20 @@ require_once 'vendor/autoload.php';
   // Affichage de l'interface de connexion
   $app->get('/', function(){  //get ou post
     $uc=new UserController();
-    $uc::EnteteUser(UserController::getUser(0));//nous affiche le user 1 (le parametre est useless)
+    $uc::EnteteUser(UserController::getUser(0));
   })->name('home');
 
-  // Affichage de la liste id = 1
-  $app->get('/liste', function(){  //get ou post
-    $lc=new ListController();
-    $lc::affichageListe(1);
-   })->name('liste_aff');
-  
+
+$app->get('/user', function(){
+    $slim = \Slim\Slim::getInstance();
+    $id = $slim->request->get()['user'];
+    $al= new ListController();
+    $al::affichageListe($id);
+})->name('repForm');
+
+
+
+
   $app->run();
 
 ?>
