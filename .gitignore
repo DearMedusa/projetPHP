@@ -662,3 +662,4 @@ vendor/symfony/translation/Util/ArrayConverter.php
 vendor/symfony/translation/Util/XliffUtils.php
 vendor/symfony/translation/Writer/TranslationWriter.php
 vendor/symfony/translation/Writer/TranslationWriterInterface.php
+composer.lock
