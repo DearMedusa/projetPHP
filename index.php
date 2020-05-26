@@ -31,13 +31,10 @@ require_once 'vendor/autoload.php';
 
 $app->get('/user', function(){
     $slim = \Slim\Slim::getInstance();
-    $id = $slim->request->get()['user'];
-    $al= new ListController();
-    $al::affichageListe($id);
+    $user = $slim->request->get()['user'];//check toutes les lignes de la table user
+    $al= new ListController();//créer un listcontroller
+    $al::affichageListe($user);//appel ListController.affichageListe
 })->name('repForm');
-
-
-
 
   $app->run();
 

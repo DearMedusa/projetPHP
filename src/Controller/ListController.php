@@ -6,7 +6,7 @@
 
   use \PHPProject\models\Liste as Liste;
   use \PHPProject\models\User as User;
-  use \PHPProject\view\ListView as ListView;  // A voir pous "as"
+  use \PHPProject\View\ListView as ListView;  // A voir pous "as"
 
   class ListController{
     
@@ -31,20 +31,20 @@
     }
 
 
-    //retourne le proprietaire de la liste
+    //retourne le proprietaire de la liste NE FONCTIONNE PAS
     public function getListUser($id){
-      $liste = Liste::where('no','=', $id)->first();
-      return $liste->user_id; 
+      //$liste = Liste::where('no','=', $id)->first();
+      return 1;//$liste->user_id; 
     }
-    
 
     //affichage de liste
     public function affichageListe($id){
       //appel de listView avec en parametre la liste qui correspond à l'id $id
       $view = new ListView();
-      $view->affichageListe(User::where('id','=', 1)->first());
+      $view->affichageListe(User::where('id','=', $id)->first());
     }
 
+    // Suppression de liste
     public function supprimerListe($id){
     $view = new ListView();
     $list = Liste::where('no','=',$id)->first();

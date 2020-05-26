@@ -13,11 +13,9 @@ class UserController{
 	}
 
 	static function getUser($id){  // voir comment palier session() !!!!!!
-		$user = User::select('login')->where ('id','=', 1)->get();
+		$user = User::select('login')->where ('id','=', $id)->get();
 		return $user;
 	}
 
-
 }
-
 ?> 
