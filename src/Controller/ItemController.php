@@ -15,7 +15,6 @@
 
     //affiche les items d'une liste spécifiée
     function affichageItem($listid){
-      echo("test");
         $item = Item::where(['liste_id' => $listid])->get();
         $view = new ItemView();
         $view->affichageItem($item);
