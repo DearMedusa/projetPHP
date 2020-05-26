@@ -20,6 +20,7 @@ ConnectionFactory::makeConnection();
             <select name='user'>
             <option value=''>Choisir un utilisateur</option>";
       $Liste = User::select('login', 'id')->get(); // il s'agit de la classe 
+      
       foreach ($Liste as $rangee){//pour toutes les listes de l'utilisateur
         $UserId=$rangee["id"];
         $nomUser=$rangee["login"];

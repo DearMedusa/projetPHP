@@ -28,7 +28,6 @@
       // a voir plus tard
     }
 
-    //retourne le proprietaire de la liste NE FONCTIONNE PAS
     public function getListUser($id){
       $liste = Liste::where('no','=', $id)->first();
       return $liste->user_id; 
@@ -46,6 +45,7 @@
     $view = new ListView();
     $list = Liste::where('no','=',$id)->first();
     $list->delete();
+    echo("SUPPRESSION DE LA LISTE");
     }
   }
 

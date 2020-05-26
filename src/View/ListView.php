@@ -20,6 +20,20 @@ class ListView{
 			echo('Description : '.$liste[$i]->description."</br>");
 			echo('Date limite : '.$liste[$i]->expiration."</br>");
 			echo('Token : '.$liste[$i]->token."</br>");
+			$boutonSupprimer = "<input type='submit' value='Supprimer Liste'>\n"; 
+			$supp = $app->urlFor('suppList');
+
+			$boutonAjouter = "<input type='submit' value='Ajouter Liste'>\n"; 
+			$add = $app->urlFor('addList');
+
+      		/*echo "<form method='GET' action='$action'>
+            <select name='user'>
+            <option value=''>Choisir un utilisateur</option>";
+			  $Liste = User::select('login', 'id')->get(); // il s'agit de la classe 
+			 */ 
+			$boutonSupprimer.= $supp;
+			$boutonAjouter .= $add;
+			echo($boutonSupprimer.$boutonAjouter);
 		}
 	}
 

@@ -29,14 +29,24 @@ require_once 'vendor/autoload.php';
   })->name('home');
 
 
-$app->get('/user', function(){
+  $app->get('/user', function(){
+      $slim = \Slim\Slim::getInstance();
+      $user = $slim->request->get()['user'];//check toutes les lignes de la table user
+      $al= new ListController();//créer un listcontroller
+      $al::affichageListe($user);//appel ListController.affichageListe
+  })->name('repForm');
+
+  $app->post('/', function(){
     $slim = \Slim\Slim::getInstance();
-    $user = $slim->request->get()['user'];//check toutes les lignes de la table user
-    $al= new ListController();//créer un listcontroller
-    $al::affichageListe($user);//appel ListController.affichageListe
-})->name('repForm');
+    $lc= new ListController();
+    $lc::supprimerListe(2);
+  })->name('suppList');
 
-
+  $app->post('/', function(){
+    $slim = \Slim\Slim::getInstance();
+    $lc= new ListController();
+    //$lc::ajouterList();
+  })->name('addList');
 
 
   $app->run();
