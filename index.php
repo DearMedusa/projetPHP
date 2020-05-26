@@ -4,9 +4,10 @@
 require_once 'vendor/autoload.php';
   
   //Imports
-  use PHPProject\Controller\ListController;
-  use PHPProject\Controller\UserController;
-  use PHPProject\Controller\ItemController;
+  use PHPProject\Controller\ListController as ListController;
+  use PHPProject\Controller\UserController as UserController;
+  use PHPProject\Controller\ItemController as ItemController;
+  use PHPProject\models\Liste as Liste;
 
 
   // Base de données
@@ -50,9 +51,16 @@ require_once 'vendor/autoload.php';
 
   $app->get('/inscription', function(){//NE FONCTIONNE PAS (trop)
     $slim = \Slim\Slim::getInstance();
-    $al = new userController();
+    $al = new UserController();
     $al::inscription();
   })->name('inscription');
+
+  $app->get('/affList', function(){//NE FONCTIONNE PAS (trop) ------------------------------
+    $slim = \Slim\Slim::getInstance();
+    $aff = new ItemController();
+    $aff::affichageItem(1);//marche pas
+
+  })->name('affList');
 
 
   $app->run();

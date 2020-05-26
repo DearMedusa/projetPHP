@@ -4,7 +4,7 @@ namespace PHPProject\View;
 use \PHPProject\Controller\UserController as UserController;
 use \PHPProject\models\Liste as Liste;
 use \PHPProject\Controller\ListController as ListController;
-
+use PHPProject\View\ItemView as ItemView;
 
 class ListView{
 
@@ -26,6 +26,9 @@ class ListView{
 			$boutonAjouter = "<input type='submit' value='Ajouter Liste'>\n"; 
 			$add = $app->urlFor('addList');
 
+            $boutonAfficher = " <form name=\"afficher\" method=\"GET\" action =\"affList\"> <input type='submit' value='Afficher Liste'> </form>\n";
+            $aff = $app->urlFor('affList');
+
       		/*echo "<form method='GET' action='$action'>
             <select name='user'>
             <option value=''>Choisir un utilisateur</option>";
@@ -33,8 +36,10 @@ class ListView{
 			 */ 
 			$boutonSupprimer.= $supp;
 			$boutonAjouter .= $add;
-			echo($boutonSupprimer.$boutonAjouter);
+            $boutonAfficher .= $aff;
+			echo($boutonSupprimer.$boutonAjouter.$boutonAfficher);
 		}
 	}
 
 }
+?>

@@ -20,7 +20,7 @@ class ItemView{
       if (isset($item->url)) $content .= "<p> Plus d'infos : <a href='$item->url' target=_blank> $item->url </a></p>\n";
 
       $content .= "\n<!-- Actions -->\n";
- 	$this->addContent($content);
+      //$this->addContent($content);
 	}
 
 }
