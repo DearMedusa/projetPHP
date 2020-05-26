@@ -9,7 +9,6 @@ use \PHPProject\view\UserView as UserView;
 class UserController{
 
 	static function EnteteUser(){
-		$content = "";
 	    UserView::EnteteUser();
 	}
 
@@ -17,6 +16,7 @@ class UserController{
 		$user = User::select('login')->where ('id','=', 1)->get();
 		return $user;
 	}
+
 
 }
 
