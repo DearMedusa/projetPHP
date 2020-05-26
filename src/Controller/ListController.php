@@ -30,17 +30,19 @@
       // a voir plus tard
     }
 
+
     //retourne le proprietaire de la liste
     public function getListUser($id){
       $liste = Liste::where('no','=', $id)->first();
       return $liste->user_id; 
     }
     
+
     //affichage de liste
     public function affichageListe($id){
       //appel de listView avec en parametre la liste qui correspond à l'id $id
       $view = new ListView();
-      $view->affichageListe(Liste::where('no','=', $id)->first());
+      $view->affichageListe(User::where('id','=', 1)->first());
     }
 
     public function supprimerListe($id){
