@@ -32,6 +32,5 @@
 
     $item->save();
     $view->affichageItem($item);
-
   	}
   }
