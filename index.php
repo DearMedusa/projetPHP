@@ -36,17 +36,23 @@ require_once 'vendor/autoload.php';
       $al::affichageListe($user);//appel ListController.affichageListe
   })->name('repForm');
 
-  $app->post('/', function(){
+  $app->post('/', function(){//NE FONCTIONNE PAS (trop)
     $slim = \Slim\Slim::getInstance();
     $lc= new ListController();
     $lc::supprimerListe(2);
   })->name('suppList');
 
-  $app->post('/', function(){
+  $app->post('/', function(){//NE FONCTIONNE PAS (trop)
     $slim = \Slim\Slim::getInstance();
     $lc= new ListController();
     //$lc::ajouterList();
   })->name('addList');
+
+  $app->get('/inscription', function(){//NE FONCTIONNE PAS (trop)
+    $slim = \Slim\Slim::getInstance();
+    $al = new userController();
+    $al::inscription();
+  })->name('inscription');
 
 
   $app->run();

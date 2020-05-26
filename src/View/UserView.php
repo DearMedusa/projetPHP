@@ -20,7 +20,7 @@ ConnectionFactory::makeConnection();
             <select name='user'>
             <option value=''>Choisir un utilisateur</option>";
       $Liste = User::select('login', 'id')->get(); // il s'agit de la classe 
-      
+
       foreach ($Liste as $rangee){//pour toutes les listes de l'utilisateur
         $UserId=$rangee["id"];
         $nomUser=$rangee["login"];
@@ -28,8 +28,12 @@ ConnectionFactory::makeConnection();
       }
 
       $content .= "    <input type='submit' value='Connexion'>\n";
-      $content .= "    <a id='inscriptionLink' href='".$app->urlFor('home')."'>Inscription</a>\n";
+      $content .= "    <a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscription</a>\n";
       $content .= "  </form>\n";
       echo $content;
-  	}
+    }
+    
+    public static function inscription(){
+      echo("<h1>INSCRIPTION</h1>");
+    }
   }

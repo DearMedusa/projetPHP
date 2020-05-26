@@ -12,6 +12,10 @@ class UserController{
 	    UserView::EnteteUser();
 	}
 
+	static function inscription(){
+	    UserView::inscription();
+	}
+
 	static function getUser($id){  // voir comment palier session() !!!!!!
 		$user = User::select('login')->where ('id','=', $id)->get();
 		return $user;
