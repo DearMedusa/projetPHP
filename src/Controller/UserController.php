@@ -16,6 +16,5 @@ class UserController{
 		$user = User::select('login')->where ('id','=', $id)->get();
 		return $user;
 	}
-
 }
 ?> 

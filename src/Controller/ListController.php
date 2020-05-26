@@ -2,8 +2,6 @@
   
   namespace PHPProject\Controller;
 
-  require_once 'vendor/autoload.php';
-
   use \PHPProject\models\Liste as Liste;
   use \PHPProject\models\User as User;
   use \PHPProject\View\ListView as ListView;  // A voir pous "as"
@@ -30,11 +28,10 @@
       // a voir plus tard
     }
 
-
     //retourne le proprietaire de la liste NE FONCTIONNE PAS
     public function getListUser($id){
-      //$liste = Liste::where('no','=', $id)->first();
-      return 1;//$liste->user_id; 
+      $liste = Liste::where('no','=', $id)->first();
+      return $liste->user_id; 
     }
 
     //affichage de liste
