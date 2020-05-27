@@ -28,9 +28,6 @@
       $view = new ListView();
       $view->formulaireListe();
     }
-
-
-
     
     //edition de liste (LVL 2)
     public function editList(){

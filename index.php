@@ -43,12 +43,14 @@ require_once 'vendor/autoload.php';
     $lc::supprimerListe(2);
   })->name('suppList');
 
-  $app->post('/', function(){//NE FONCTIONNE PAS (trop)
+  // Formulaire d'ajout de liste
+  $app->get('/addList', function(){
     $slim = \Slim\Slim::getInstance();
-    $lc= new ListController();
-    //$lc::ajouterList();
+    $lc = new ListController();
+    $lc::ajouterList();
   })->name('addList');
 
+  // Formulaire d'inscription
   $app->get('/inscription', function(){
     $slim = \Slim\Slim::getInstance();
     $al = new UserController();

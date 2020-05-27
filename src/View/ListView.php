@@ -24,18 +24,15 @@ class ListView{
 			$boutonSupprimer = "<input type='submit' value='Supprimer Liste'>\n"; 
 			$supp = $app->urlFor('suppList');
 
-			
-
+			ItemController::affichageItems($liste[$i]->no);
 
 			$add = $app->urlFor('addList');
 			echo ("<form action='$add'>");
-			echo ("<input type='submit' action='$add' value='Ajouter Liste'>\n"); 
+			$boutonAjouter = "<input type='submit' action='$add' value='Ajouter Liste'>\n"; 
+			echo($boutonAjouter);
 			echo("</form>");
 
-			ItemController::affichageItems($liste[$i]->no);
-
 			$boutonSupprimer.= $supp;
-			
 			echo($boutonSupprimer);
 		}
 	}
@@ -46,15 +43,13 @@ class ListView{
 		echo("Veuillez remplir tous les champs suivants : </br>");
 
 		echo("<label for=\"listTitre\">Titre de la liste: </label>
-  <input type=\"text\"><br>
-  <label for=\"descriptionListe\">Description de la liste: </label>
-  <input type=\"text\"><br>
-  <label for=\"dateExp\">Date d'expiration: </label>
-  <input type=\"date\"><br>
-
-  <input type=\"submit\" value=\"Submit\">");
+  			  <input type=\"text\"><br>
+  			  <label for=\"descriptionListe\">Description de la liste: </label>
+  		      <input type=\"text\"><br>
+  			  <label for=\"dateExp\">Date d'expiration: </label>
+  			  <input type=\"date\"><br>
+			  <input type=\"submit\" value=\"Submit\">
+			  <label for=\"dateExp\">Propriétaire de la liste: </label>");
 	}
-
-
 }
 ?>

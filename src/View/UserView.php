@@ -34,6 +34,12 @@ ConnectionFactory::makeConnection();
     }
     
     public static function inscription(){
-      echo("<h1>INSCRIPTION</h1>");
+      echo("<h1>Formulaire d'Inscription</h1>");
+
+		echo("Veuillez remplir tous les champs suivants : </br>");
+
+		echo("<label for=\"listTitre\">Login: </label>
+          <input type=\"text\"></br>
+          <input type=\"submit\" value=\"S'enregistrer\">");
     }
   }
