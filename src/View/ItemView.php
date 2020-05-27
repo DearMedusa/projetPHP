@@ -12,7 +12,8 @@ class ItemView{
 
       $max = count($item);
 	for ($i = 0; $i < $max; $i++) {
-            echo("<img src=\"https://searchengineland.com/images/authors/BradGeddes-lg.jpg\">");
+            //echo("<img src='$item[$i]->img'>\n");
+            echo("<img src='img/download.jpg'>\n");
             echo("</br>");
 		echo('<b>Nom :</b> '.$item[$i]->nom."</br>");
 		echo('<b>Description</b> : '.$item[$i]->descr."</br>");
@@ -22,7 +23,7 @@ class ItemView{
 
             $boutonAfficher = "<input type='submit' value='Afficher'>";
             $add = $app->urlFor('affItem');
-            $boutonAfficher.= $add;
+            //$boutonAfficher.= $add;
 
             echo($boutonAfficher);
             echo("<input type='submit' value='Reserver'>");
