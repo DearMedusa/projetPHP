@@ -23,6 +23,14 @@
       $view->affichageListe($list);//ListeView.affichageListe();
       
     }
+
+    public function ajouterList(){
+      $view = new ListView();
+      $view->formulaireListe();
+    }
+
+
+
     
     //edition de liste (LVL 2)
     public function editList(){
