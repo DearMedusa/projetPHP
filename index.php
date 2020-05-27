@@ -51,6 +51,14 @@ require_once 'vendor/autoload.php';
     $lc::ajouterList();
   })->name('addList');
 
+  // Formulaire d'ajout d'user-------------------------------
+  $app->post('/inscription/register', function(){
+    $slim = \Slim\Slim::getInstance();
+    $lc = new UserController();
+    $lc::ajouterUser();
+    $slim->redirect($slim->urlFor('home'));
+  })->name('addUser');
+
   // Formulaire d'inscription
   $app->get('/inscription', function(){
     $slim = \Slim\Slim::getInstance();

@@ -34,14 +34,16 @@ ConnectionFactory::makeConnection();
     }
     
     public static function inscription(){
+      $slim = \Slim\Slim::getInstance();
+      $login = '';
       echo("<h1>Formulaire d'Inscription</h1>");
-
-		echo("Veuillez remplir tous les champs suivants : </br>");
-
-    //créer un forme <form>
-		echo("<label for=\"listTitre\">Login: </label>
-          <input type=\"text\"></br>
-          <input type=\"submit\" value=\"S'enregistrer\">");
-          //</form>
+      echo("Veuillez remplir le champ suivant : </br>");
+      //---------------------------------------------------------------------------------------------------------------------
+      $add = $slim->urlFor('addUser');//action du bouton (changer l'URL)
+      echo ("<form action='$add' method = 'post'>
+      <label for=\"listTitre\">Login: </label>
+      <input required type='text' placeholder='Login' name='acc_login' value='$login'></br>
+      <input type='submit' value='Enregistrer'>\n
+      </form>");//fin du formulaire
     }
   }
