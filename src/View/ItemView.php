@@ -12,7 +12,7 @@ class ItemView{
 
       $max = count($item);
 	for ($i = 0; $i < $max; $i++) {
-            echo("<img src=".$item[$i]->img."></br>");
+            echo("<img src=./img/".$item[$i]->img."></br>");
 		echo('<b>Nom :</b> '.$item[$i]->nom."</br>");
 		echo('<b>Description</b> : '.$item[$i]->descr."</br>");
             echo('<b>Tarif :</b> '.$item[$i]->tarif."€ </br>");
@@ -20,7 +20,5 @@ class ItemView{
             echo("<input type='submit' value='Reserver'>");
             echo("<input type='submit' value='Supprimer'></br>");
 		}
-
 	}
-
 }
