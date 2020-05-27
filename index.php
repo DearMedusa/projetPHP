@@ -37,10 +37,11 @@ require_once 'vendor/autoload.php';
       $al::affichageListe($user);//appel ListController.affichageListe
   })->name('repForm');
 
+  // Suppression de liste
   $app->post('/', function(){//NE FONCTIONNE PAS (trop)
     $slim = \Slim\Slim::getInstance();
     $lc= new ListController();
-    $lc::supprimerListe(2);
+    $lc::supprimerListe();
   })->name('suppList');
 
   // Formulaire d'ajout de liste
@@ -57,7 +58,8 @@ require_once 'vendor/autoload.php';
     $al::inscription();
   })->name('inscription');
 
-  $app->get('/affItem', function(){// ne fonctionne pas encore
+  //je sais pas si c'est encore utile ça...
+  $app->get('/affItem', function(){//toujours utile ?
     $slim = \Slim\Slim::getInstance();
     $al = new ItemController();
     $al::affichageItem(1);

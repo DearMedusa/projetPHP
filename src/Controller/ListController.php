@@ -28,7 +28,7 @@
       $view = new ListView();
       $view->formulaireListe();
     }
-    
+
     //edition de liste (LVL 2)
     public function editList(){
       // a voir plus tard
@@ -50,15 +50,20 @@
     public function affichageListe($idUser){
       //appel de listView avec en parametre la liste qui correspond à l'id $id
       $view = new ListView();
-      $view->affichageListe(User::where('id','=', $idUser)->first());
+      $wishlist = Liste::where('user_id','=',$idUser)->first();
+      if ($wishlist != null){
+        $view->affichageListe(User::where('id','=', $idUser)->first());
+      }else{
+        $view->aucuneListe();
+      }
     }
 
     // Suppression de liste
     public function supprimerListe($id){
+      //quelquepart là dedans il va falloir tricher pour pouvoir récuperer l'id de la liste à supprimer
     $view = new ListView();
     $list = Liste::where('no','=',$id)->first();
     $list->delete();
-    echo("SUPPRESSION DE LA LISTE");
     }
   }
 

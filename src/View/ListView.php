@@ -11,7 +11,6 @@ class ListView{
 
 	public function affichageListe($user){
 		$app = \Slim\Slim::getInstance();
-		ListController::getListUser($user->id);//on recupere 
 		$liste = Liste::select('*')->where ('user_id','=', $user->id)->get();//RETOURNE UN TABLEAU D'OBJETS
 		$max = count($liste);
 
@@ -21,10 +20,14 @@ class ListView{
 			echo('Description : '.$liste[$i]->description."</br>");
 			echo('Date limite : '.$liste[$i]->expiration."</br>");
 			echo('Token : '.$liste[$i]->token."</br>");
-			$boutonSupprimer = "<input type='submit' value='Supprimer Liste'>\n"; 
-			$supp = $app->urlFor('suppList');
 
 			ItemController::affichageItems($liste[$i]->no);
+
+			$supp = $app->urlFor('suppList');
+			echo ("<form action='$supp'>");
+			$boutonSupprimer = "<input type='submit' action='$supp' value='Supprimer Liste'>\n"; 
+			echo($boutonSupprimer);
+			echo("</form>");
 
 			$add = $app->urlFor('addList');
 			echo ("<form action='$add'>");
@@ -32,9 +35,11 @@ class ListView{
 			echo($boutonAjouter);
 			echo("</form>");
 
-			$boutonSupprimer.= $supp;
-			echo($boutonSupprimer);
 		}
+	}
+
+	public function aucuneListe(){
+		echo("<h1>Cet utilisateur n'a aucune liste</h1>");
 	}
 
 	public function formulaireListe(){

@@ -27,9 +27,9 @@ ConnectionFactory::makeConnection();
         echo "<option value='".$UserId."'>".$nomUser."</option> \n";//une option par user
       }
 
-      $content .= "    <input type='submit' value='Connexion'>\n";
-      $content .= "    <a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscription</a>\n";
-      $content .= "  </form>\n";
+      $content .= "<input type='submit' value='Connexion'>\n";
+      $content .= "<a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscription</a>\n";
+      $content .= "</form>\n";
       echo $content;
     }
     
@@ -38,8 +38,10 @@ ConnectionFactory::makeConnection();
 
 		echo("Veuillez remplir tous les champs suivants : </br>");
 
+    //créer un forme <form>
 		echo("<label for=\"listTitre\">Login: </label>
           <input type=\"text\"></br>
           <input type=\"submit\" value=\"S'enregistrer\">");
+          //</form>
     }
   }
