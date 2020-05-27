@@ -14,11 +14,17 @@
 
 
     //affiche les items d'une liste spécifiée
-    function affichageItem($listid){
+    function affichageItems($listid){
         $item = Item::where(['liste_id' => $listid])->get();
         $view = new ItemView();
-        $view->affichageItem($item);
+        $view->affichageItems($item);
     }
+
+    function affichageItem($listid){
+      $item = Item::where(['liste_id' => $listid])->get();
+      $view = new ItemView();
+      $view->affichageItem($item);
+  }
 
     function creerItem($list_id){
       $view = new ItemView();

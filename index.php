@@ -55,16 +55,11 @@ require_once 'vendor/autoload.php';
     $al::inscription();
   })->name('inscription');
 
-  $app->get('/affList', function(){//NE FONCTIONNE PAS (trop) ------------------------------
+  $app->get('/affItem', function(){// ne fonctionne pas encore
     $slim = \Slim\Slim::getInstance();
-    //$list = Liste::where('id','=', $id)->first();
-    //on veut afficher les items qui correspondent à la liste 
-    //tout le pb réside ds le fait qu'on a aucun moyen de connaitre
-    //la liste sur laquelle on est quand on appuis sur le bouton "afficher liste"
-    $aff = new ItemController();
-    $aff::affichageItem(2);
-  })->name('affList');//mais quand on appuis sur le bouton 'afficher liste'....on est déja dans une liste précise !
+    $al = new ItemController();
+    $al::affichageItem(1);
+  })->name('affItem');
 
   $app->run();
-
 ?>

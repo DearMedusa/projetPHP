@@ -27,7 +27,7 @@ class ListView{
 			$boutonAjouter = "<input type='submit' value='Ajouter Liste'>\n"; 
 			$add = $app->urlFor('addList');
 
-			ItemController::affichageItem($liste[$i]->no);
+			ItemController::affichageItems($liste[$i]->no);
 
 			$boutonSupprimer.= $supp;
 			$boutonAjouter .= $add;
