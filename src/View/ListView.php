@@ -24,16 +24,37 @@ class ListView{
 			$boutonSupprimer = "<input type='submit' value='Supprimer Liste'>\n"; 
 			$supp = $app->urlFor('suppList');
 
-			$boutonAjouter = "<input type='submit' value='Ajouter Liste'>\n"; 
+			
+
+
 			$add = $app->urlFor('addList');
+			echo ("<form action='$add'>");
+			echo ("<input type='submit' action='$add' value='Ajouter Liste'>\n"); 
+			echo("</form>");
 
 			ItemController::affichageItems($liste[$i]->no);
 
 			$boutonSupprimer.= $supp;
-			$boutonAjouter .= $add;
-			echo($boutonSupprimer.$boutonAjouter);
+			
+			echo($boutonSupprimer);
 		}
 	}
+
+	public function formulaireListe(){
+		echo("<h1>Formulaire de création d'une liste</h1>");
+
+		echo("Veuillez remplir tous les champs suivants : </br>");
+
+		echo("<label for=\"listTitre\">Titre de la liste: </label>
+  <input type=\"text\"><br>
+  <label for=\"descriptionListe\">Description de la liste: </label>
+  <input type=\"text\"><br>
+  <label for=\"dateExp\">Date d'expiration: </label>
+  <input type=\"date\"><br>
+
+  <input type=\"submit\" value=\"Submit\">");
+	}
+
 
 }
 ?>
