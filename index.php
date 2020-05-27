@@ -29,7 +29,7 @@ require_once 'vendor/autoload.php';
     $uc::EnteteUser(UserController::getUser(0));
   })->name('home');
 
-
+  //affiche les differentes listes d'un utilisateur
   $app->get('/user', function(){
       $slim = \Slim\Slim::getInstance();
       $user = $slim->request->get()['user'];//check toutes les lignes de la table user
