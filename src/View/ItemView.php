@@ -27,10 +27,11 @@ class ItemView{
             echo('<b>Tarif :</b> '.$item[$i]->tarif."€ </br>");
             echo("<b>Reservé par :</b> ".$item[$i]->reservation);
             echo("</br>");
-            $book=$app->urlFor("bookForm", [$item[$i]->id]);
-            echo("<form action='$book' method='post'>");
-            echo("<input type='submit' value='Reserver'>");
-            echo("</form>");
+
+
+            //echo("<input type ='text' name='itemid' value='".$item[$i]->id."'>");//METTRE EN HIDDEN
+            echo("<a href=".$app->urlFor('bookForm',array('token' => $item[$i]->id)).">Resrver</a>");
+
             echo("<input type='submit' value='Supprimer'>");
             echo("</div>");
 		}
@@ -66,17 +67,18 @@ class ItemView{
 
 
 
-      function affBookForm(){
+      function affBookForm($id){
             Outils::headerHTML("Réservation d'item");
             $slim = \Slim\Slim::getInstance();
             echo("<h1>Formulaire de réservation d'item </h1>");
             echo("Veuillez remplir le champ suivant : </br>");
-            $add = $slim->urlFor('booking');//action du bouton (changer l'URL)
+
+            $add = $slim->urlFor('booking',array('book_name'=>$id));//action du bouton (changer l'URL)
             echo ("<form action='$add' method = 'post'>
             <label for=\"listTitre\">Votre prénom : </label>
-            <input required type='text'  name='book_name'></br>
-            <input type='submit' value='Réserver'>\n
+            <a href=".$slim->urlFor('booking',array('token' => $id)).">Valider</a></br>
             </form>");//fin du formulaire
+
             Outils::footerHTML();
       }
 

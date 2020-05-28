@@ -10,6 +10,7 @@
   use \PHPProject\controller\UserController as UserController;
   use \PHPProject\controller\ListController as ListController;
 
+
   class ItemController{
 
 
@@ -31,13 +32,10 @@
       $view::affFormItem();
     }
 
-    function affBookForm(){
+    function affBookForm($id){
       $view=new ItemView();
-      $view::affBookForm();
+      $view::affBookForm($id);
     }
-
-
-
 
     function ajouterItem(){
         $slim = \Slim\Slim::getInstance();
@@ -49,9 +47,10 @@
         $item->save();
       }
 
-
-
-      function reservationItem(){
-        
+      function reservationItem($id){
+        $slim = \Slim\Slim::getInstance();
+        $item = Item::find($id);//::where(['id' => $id])->get();
+        $item->reservation = "Vrai";
+        $item->save();
       }
   }

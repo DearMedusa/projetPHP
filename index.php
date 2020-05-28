@@ -8,6 +8,7 @@ require_once 'vendor/autoload.php';
   use PHPProject\Controller\UserController as UserController;
   use PHPProject\Controller\ItemController as ItemController;
   use PHPProject\models\Liste as Liste;
+  use PHPProject\models\Item as Item;
 
 
   // Base de données
@@ -38,12 +39,12 @@ require_once 'vendor/autoload.php';
   })->name('repForm');
 
   // Suppression de liste
- //$app->post('/', function(){//NE FONCTIONNE PAS ENCORE
-   // $slim = \Slim\Slim::getInstance();
-    //$lc= new ListController();
-    //$lc::supprimerListe();
-    //$slim->redirect($slim->urlFor('user'));
-  //})->name('suppList');
+ $app->post('/', function(){//NE FONCTIONNE PAS ENCORE
+    $slim = \Slim\Slim::getInstance();
+    $lc= new ListController();
+    $lc::supprimerListe();
+    $slim->redirect($slim->urlFor('user'));
+  })->name('suppList');
 
   // Formulaire d'ajout de liste
   $app->get('/user/FormList', function(){
@@ -55,19 +56,19 @@ require_once 'vendor/autoload.php';
 
 
  // Formulaire de réservation d'item
-  $app->get('/user/bookForm', function(){
-    $ic = new ItemController();
-    $ic::affBookForm();
+ $app->get('/user(/:token)', function($token){
+    $controller = new ItemController();
+    $controller->affBookForm($token);
   })->name('bookForm');
 
 
-
  // Réservation d'item
-  $app->post('/', function(){//NE FONCTIONNE PAS ENCORE
+  $app->get('/user/item(/:token)', function($token){//NE FONCTIONNE PAS ENCORE
     $slim = \Slim\Slim::getInstance();
     $bi= new ItemController();
-    $bi::reservationItem();
-    $slim->redirect($slim->urlFor('home'));
+    $item = Item::where(['id' => $token])->get();
+    $bi::reservationItem($item);
+    //$slim->redirect($slim->urlFor('home'));
   })->name('booking');
 
 
