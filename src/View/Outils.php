@@ -14,15 +14,23 @@ class Outils
     <title>$titre</title>
     <link rel=\"stylesheet\" href=\"css\style.css\">
 </head>
-<body>");
+
+<body>
+    <header>
+        <h1>Wishlist</h1>
+    </header>
+
+    <div class='content'>
+
+");
     }
 
 
     public static function footerHTML()
     {
         echo(
-
-        "<h1> footer</h1></body>
+        "</div>
+        <footer> de Bigault de Granrut - Martin <br> IUT Nancy-Charlemagne</footer></body>
 </html>");
     }
 }
