@@ -42,22 +42,22 @@ require_once 'vendor/autoload.php';
     $slim = \Slim\Slim::getInstance();
     $lc= new ListController();
     $lc::supprimerListe();
+    $slim->redirect($slim->urlFor('user'));
   })->name('suppList');
 
   // Formulaire d'ajout de liste
-  $app->get('/addList', function(){
+  $app->get('/user/FormList', function(){
+    $lc = new ListController();
+    $lc::affFormList();
+  })->name('FormList');
+
+  // Formulaire d'ajout d'user
+  $app->post('/user/addList', function(){
     $slim = \Slim\Slim::getInstance();
     $lc = new ListController();
     $lc::ajouterList();
-  })->name('addList');
-
-  // Formulaire d'ajout d'user-------------------------------
-  $app->post('/inscription/register', function(){
-    $slim = \Slim\Slim::getInstance();
-    $lc = new UserController();
-    $lc::ajouterUser();
     $slim->redirect($slim->urlFor('home'));
-  })->name('addUser');
+  })->name('addList');
 
   // Formulaire d'inscription
   $app->get('/inscription', function(){
@@ -65,6 +65,14 @@ require_once 'vendor/autoload.php';
     $al = new UserController();
     $al::inscription();
   })->name('inscription');
+
+  // Formulaire d'ajout d'user
+  $app->post('/inscription/register', function(){
+    $slim = \Slim\Slim::getInstance();
+    $lc = new UserController();
+    $lc::ajouterUser();
+    $slim->redirect($slim->urlFor('home'));
+  })->name('addUser');
 
   //je sais pas si c'est encore utile ça...
   $app->get('/affItem', function(){//toujours utile ?

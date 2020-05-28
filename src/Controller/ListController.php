@@ -10,21 +10,17 @@
   class ListController{
     
     //creation de liste
-    public function createList(){
-      $view = new ListView();
-      $user = AccountController::getCurrentUser();
-
-      $liste = new Liste();
-      $liste->user_id = $user->id_account;
-      $liste->titre =  $_POST['nom_liste'];//nom_liste = nom du bouton
-      $liste->description = $_POST['description_liste'];
-
+    public function ajouterList(){
+      $slim = \Slim\Slim::getInstance();
+      $list = new Liste();
+      $list->titre = $slim->request->post('liste_titre');
+      $list->description = $slim->request->post('liste_description');
+      $list->user_id = $slim->request->post('liste_proprietaire');
+      $list->expiration = $slim->request->post('liste_date');
       $list->save();
-      $view->affichageListe($list);//ListeView.affichageListe();
-      
     }
 
-    public function ajouterList(){
+    public function affFormList(){
       $view = new ListView();
       $view->formulaireListe();
     }
@@ -60,8 +56,6 @@
 
     // Suppression de liste
     public function supprimerListe($id){
-      //quelquepart là dedans il va falloir tricher pour pouvoir récuperer l'id de la liste à supprimer
-    $view = new ListView();
     $list = Liste::where('no','=',$id)->first();
     $list->delete();
     }
