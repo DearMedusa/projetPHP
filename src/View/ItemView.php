@@ -14,8 +14,11 @@ class ItemView{
 	for ($i = 0; $i < $max; $i++) {
             echo("</br>");
             $path="img/".$item[$i]->img;
-            
-            echo ("<img src='$path' class='img-item' width=\"350\" height=\"250\">\n");
+            if(isset($item[$i]->img)){
+                  echo ("<img src='$path' class='img-item' width=\"350\" height=\"250\">\n");
+            }else{
+                  echo("<i>Image indisponible</i>");
+            }
             echo("</br>");
 		echo('<b>Nom :</b> '.$item[$i]->nom."</br>");
 		echo('<b>Description</b> : '.$item[$i]->descr."</br>");
