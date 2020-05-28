@@ -66,9 +66,9 @@ require_once 'vendor/autoload.php';
   $app->get('/user/item(/:token)', function($token){//NE FONCTIONNE PAS ENCORE
     $slim = \Slim\Slim::getInstance();
     $bi= new ItemController();
-    $item = Item::where(['id' => $token])->get();
-    $bi::reservationItem($item);
-    //$slim->redirect($slim->urlFor('home'));
+    //$item = Item::where(['id' => $token])->get();
+    $bi::reservationItem($token);
+    $slim->redirect($slim->urlFor('home'));
   })->name('booking');
 
 
