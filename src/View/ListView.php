@@ -16,13 +16,13 @@ class ListView{
 		$liste = Liste::select('*')->where ('user_id','=', $user->id)->get();//RETOURNE UN TABLEAU D'OBJETS
 		$max = count($liste);
 
-		echo("<h1> Liste(s) de ".$user->login."</h1>");//retourne le nom de l'utilisateur de la liste
+		echo("<div class='listeEntete'>Liste(s) de ".$user->login."</div>");//retourne le nom de l'utilisateur de la liste
 
 		for ($i = 0; $i < $max; $i++) {
-			echo('<h2>Titre : '.$liste[$i]->titre."</h2></br>");
-			echo('Description : '.$liste[$i]->description."</br>");
-			echo('Date limite : '.$liste[$i]->expiration."</br>");
-			echo('Token : '.$liste[$i]->token."</br>");
+			echo('<h3>Titre : <i>'.$liste[$i]->titre."</i></h3></br>");
+			echo('<b>Description :</b><i> '.$liste[$i]->description."</i></br>");
+			echo('<b>Date limite :</b><i> '.$liste[$i]->expiration."</i></br>");
+			echo('<b>Token :</b> <i>'.$liste[$i]->token."</i></br>");
 
 			ItemController::affichageItems($liste[$i]->no);
 
@@ -48,7 +48,7 @@ class ListView{
 
 	public function aucuneListe(){
 		Outils::headerHTML("Erreur");
-		echo("<h1>Cet utilisateur n'a aucune liste</h1>");
+		echo("<h2>Cet utilisateur n'a aucune liste</h2>");
 		echo("Vous pouvez en ajouter une");
 		$app = \Slim\Slim::getInstance();
 		$add = $app->urlFor('FormList');
