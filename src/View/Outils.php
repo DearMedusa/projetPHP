@@ -12,6 +12,7 @@ class Outils
 <head>
     <meta charset='UTF-8'>
     <title>$titre</title>
+    <link rel=\"stylesheet\" href=\"css\style.css\">
 </head>
 <body>");
     }
@@ -20,7 +21,8 @@ class Outils
     public static function footerHTML()
     {
         echo(
-        "</body>
+
+        "<h1> footer</h1></body>
 </html>");
     }
 }
