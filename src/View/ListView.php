@@ -6,10 +6,12 @@ use \PHPProject\models\Liste as Liste;
 use \PHPProject\Controller\ListController as ListController;
 use \PHPProject\Controller\ItemController as ItemController;
 use PHPProject\View\ItemView as ItemView;
+use \PHPProject\View\Outils;
 
 class ListView{
 
 	public function affichageListe($user){
+		Outils::headerHTML("Affichage de la liste");
 		$app = \Slim\Slim::getInstance();
 		$liste = Liste::select('*')->where ('user_id','=', $user->id)->get();//RETOURNE UN TABLEAU D'OBJETS
 		$max = count($liste);
@@ -24,11 +26,11 @@ class ListView{
 
 			ItemController::affichageItems($liste[$i]->no);
 
-			$supp = $app->urlFor('suppList');
-			echo ("<form action='$supp'>");
-			$boutonSupprimer = "<input type='submit' action='$supp' value='Supprimer Liste'>\n"; 
-			echo($boutonSupprimer);
-			echo("</form>");
+			//$supp = $app->urlFor('suppList');
+			//echo ("<form action='$supp'>");
+			//$boutonSupprimer = "<input type='submit' action='$supp' value='Supprimer Liste'>\n"; 
+			//echo($boutonSupprimer);
+			//echo("</form>");
 
 			$add = $app->urlFor('FormItem');
 			echo ("<form action='$add'>
@@ -41,9 +43,11 @@ class ListView{
 		$boutonAjouter = "<input type='submit' action='$add' value='Ajouter Liste'>\n"; 
 		echo($boutonAjouter);
 		echo("</form>");
+		Outils::footerHTML();
 	}
 
 	public function aucuneListe(){
+		Outils::headerHTML("Erreur");
 		echo("<h1>Cet utilisateur n'a aucune liste</h1>");
 		echo("Vous pouvez en ajouter une");
 		$app = \Slim\Slim::getInstance();
@@ -52,16 +56,16 @@ class ListView{
 		$boutonAjouter = "<input type='submit' action='$add' value='Ajouter Liste'>\n"; 
 		echo($boutonAjouter);
 		echo("</form>");
+		Outils::footerHTML();
 
 	}
 
 	public function formulaireListe(){
 		$slim = \Slim\Slim::getInstance();
-		echo("<h1>Formulaire de création d'une liste</h1>");
-		echo("Veuillez remplir tous les champs suivants : </br>");
-
+		Outils::headerHTML("Création de liste");
+		
 		$add = $slim->urlFor('addList');
-		echo("<form action='$add' method = 'post'>
+		echo("<h1>Formulaire de création d'une liste</h1>Veuillez remplir tous les champs suivants : </br><form action='$add' method = 'post'>
 			  <label for=\"listTitre\">Titre de la liste: </label>
   			  <input type=\"text\" name='liste_titre'><br>
   			  <label for=\"descriptionListe\">Description de la liste: </label>
@@ -70,7 +74,8 @@ class ListView{
 			  <input type=\"date\" name='liste_date'><br>
 			  <label for=\"dateExp\">Propriétaire de la liste: </label>
   			  <input type=\"text\" name='liste_proprietaire'><br>
-			  <input type=\"submit\" value=\"Submit\">");
+			  <input type=\"submit\" value=\"Submit\"></form>");
+		Outils::footerHTML();
 	}
 }
 ?>
