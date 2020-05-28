@@ -11,30 +11,29 @@ class ItemView{
 
       $max = count($item);
 	for ($i = 0; $i < $max; $i++) {
-            //echo("<img src='$item[$i]->img'>\n");
             echo("</br>");
-            //echo("<img src='img/download.jpg'>\n");
-            echo("<img src ='.$item[$i]->img.'>");
+            $path="img/".$item[$i]->img;
+            
+            echo ("<img src='$path' class='img-item' width=\"350\" height=\"250\">\n");
             echo("</br>");
 		echo('<b>Nom :</b> '.$item[$i]->nom."</br>");
 		echo('<b>Description</b> : '.$item[$i]->descr."</br>");
             echo('<b>Tarif :</b> '.$item[$i]->tarif."€ </br>");
-            echo("<b>Reservé :</b> ");
+            echo("<b>Reservé par :</b> ".$item[$i]->reservation);
             echo("</br>");
-
             echo("<input type='submit' value='Reserver'>");
             echo("<input type='submit' value='Supprimer'></br>");
 		}
       }
+      
       
       function affFormItem(){
             $slim = \Slim\Slim::getInstance();
             $login = '';
             echo("<h1>Formulaire d'ajout d'Item</h1>");
             echo("Veuillez remplir les champs suivants : </br>");
-            //---------------------------------------------------------------------------------------------------------------------
-            //nom, descr, img, liste_id, tarif
-            $add = $slim->urlFor('addItem');//action du bouton (changer l'URL)
+            
+            $add = $slim->urlFor('addItem');    //action du bouton (changer l'URL)
             echo ("<form action='$add' method = 'post'>
             <label for=\"listTitre\">Nom: </label>
             <input type=\"text\" name='item_nom'><br>
