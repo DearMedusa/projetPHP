@@ -30,13 +30,17 @@ class ListView{
 			echo($boutonSupprimer);
 			echo("</form>");
 
-			$add = $app->urlFor('FormList');
+			$add = $app->urlFor('FormItem');
+			echo ("<form action='$add'>
+			<input type='submit' action='$add' value='Ajouter Item'>\n
+			</form>");
+
+		}
+		$add = $app->urlFor('FormList');
 			echo ("<form action='$add'>");
 			$boutonAjouter = "<input type='submit' action='$add' value='Ajouter Liste'>\n"; 
 			echo($boutonAjouter);
 			echo("</form>");
-
-		}
 	}
 
 	public function aucuneListe(){

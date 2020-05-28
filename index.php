@@ -51,7 +51,7 @@ require_once 'vendor/autoload.php';
     $lc::affFormList();
   })->name('FormList');
 
-  // Formulaire d'ajout d'user
+  // Ajout d'user
   $app->post('/user/addList', function(){
     $slim = \Slim\Slim::getInstance();
     $lc = new ListController();
@@ -66,7 +66,22 @@ require_once 'vendor/autoload.php';
     $al::inscription();
   })->name('inscription');
 
-  // Formulaire d'ajout d'user
+  // Formulaire de creation d'item
+  $app->get('/FormItem', function(){
+    $slim = \Slim\Slim::getInstance();
+    $al = new ItemController();
+    $al::affFormItem();
+  })->name('FormItem');
+
+  // Creation d'item
+  $app->post('/user/addItem', function(){
+    $slim = \Slim\Slim::getInstance();
+    $lc = new ItemController();
+    $lc::ajouterItem();
+    $slim->redirect($slim->urlFor('home'));
+  })->name('addItem');
+
+  // Ajout d'user
   $app->post('/inscription/register', function(){
     $slim = \Slim\Slim::getInstance();
     $lc = new UserController();
@@ -74,7 +89,7 @@ require_once 'vendor/autoload.php';
     $slim->redirect($slim->urlFor('home'));
   })->name('addUser');
 
-  //je sais pas si c'est encore utile ça...
+  // Affichage des items d'une liste
   $app->get('/affItem', function(){//toujours utile ?
     $slim = \Slim\Slim::getInstance();
     $al = new ItemController();

@@ -26,17 +26,18 @@
       $view->affichageItem($item);
   }
 
-    function creerItem($list_id){
-      $view = new ItemView();
-      $item = new Item();
+  function affFormItem(){
+    $view = new ItemView();
+    $view::affFormItem();
+  }
 
-      $item->nom = $_POST ['itemName'];
-      $item->descr= $_POST['itemDescr'];
-      $item->tarif=$_POST['itemTarif'];
-
-      $item->liste_id = $list_id;
-
-      $item->save();
-      $view->affichageItem($item);
+    function ajouterItem(){
+        $slim = \Slim\Slim::getInstance();
+        $item = new item();
+        $item->nom = $slim->request->post('item_nom');
+        $item->descr = $slim->request->post('item_description');
+        $item->liste_id = $slim->request->post('liste_id');
+        $item->tarif = $slim->request->post('item_tarif');
+        $item->save();
       }
   }
