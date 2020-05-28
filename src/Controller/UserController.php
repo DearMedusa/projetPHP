@@ -20,9 +20,9 @@ class UserController{
 		$slim = \Slim\Slim::getInstance();
 		//echo("<script>".alert(1)."</script>");
 		$acc=new User();
-		$acc->login = $slim->request->post('acc_login');
+		//INSERT INTO
+		$acc->login = $slim->request->post('acc_login');//le nom du bouton
 		$acc->save();
-		//requete SQL insert Into
 	}
 
 	static function getUser($id){  // voir comment palier session() !!!!!!
