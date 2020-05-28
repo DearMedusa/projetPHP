@@ -4,12 +4,15 @@
 
   use \PHPProject\models\User;
   use \PHPProject\conf\ConnectionFactory;
+  use \PHPProject\View\Outils;
 
 ConnectionFactory::setConfig('conf.ini');
 ConnectionFactory::makeConnection();
 
   class UserView{
-  	public static function EnteteUser(){//affiche le formulaire de connexion/d'inscription
+  public static function EnteteUser(){//affiche le formulaire de connexion/d'inscription
+  Outils::headerHTML("Page principale");
+
 
       $content = "";
       $app = \Slim\Slim::getInstance();
@@ -31,9 +34,11 @@ ConnectionFactory::makeConnection();
       $content .= "<a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscription</a>\n";
       $content .= "</form>\n";
       echo $content;
+      Outils::footerHTML();
     }
     
     public static function inscription(){
+      Outils::headerHTML("Inscription");
       $slim = \Slim\Slim::getInstance();
       $login = '';
       echo("<h1>Formulaire d'Inscription</h1>");
@@ -45,5 +50,6 @@ ConnectionFactory::makeConnection();
       <input required type='text' placeholder='Login' name='acc_login' value='$login'></br>
       <input type='submit' value='Enregistrer'>\n
       </form>");//fin du formulaire
+      Outils::footerHTML();
     }
   }
