@@ -2,6 +2,7 @@
 
 namespace PHPProject\View;
 use \PHPProject\controller\UserController as UserController;
+use \PHPProject\View\Outils;
 
 
 class ItemView{
@@ -21,13 +22,17 @@ class ItemView{
             echo('<b>Tarif :</b> '.$item[$i]->tarif."€ </br>");
             echo("<b>Reservé par :</b> ".$item[$i]->reservation);
             echo("</br>");
+            $book=$app->urlFor("bookForm", [$item[$i]->id]);
+            echo("<form action='$book' method='post'>");
             echo("<input type='submit' value='Reserver'>");
+            echo("</form>");
             echo("<input type='submit' value='Supprimer'></br>");
 		}
       }
-      
+
       
       function affFormItem(){
+            Outils::headerHTML("Création d'item");
             $slim = \Slim\Slim::getInstance();
             $login = '';
             echo("<h1>Formulaire d'ajout d'Item</h1>");
@@ -47,6 +52,23 @@ class ItemView{
             <input type=\"text\" name='liste_id'><br>
             <input type=\"submit\" value=\"Submit\">
             </form>");
+            Outils::footerHTML();
+      }
+
+
+
+      function affBookForm(){
+            Outils::headerHTML("Réservation d'item");
+            $slim = \Slim\Slim::getInstance();
+            echo("<h1>Formulaire de réservation d'item </h1>");
+            echo("Veuillez remplir le champ suivant : </br>");
+            $add = $slim->urlFor('booking');//action du bouton (changer l'URL)
+            echo ("<form action='$add' method = 'post'>
+            <label for=\"listTitre\">Votre prénom : </label>
+            <input required type='text'  name='book_name'></br>
+            <input type='submit' value='Réserver'>\n
+            </form>");//fin du formulaire
+            Outils::footerHTML();
       }
 
 }
