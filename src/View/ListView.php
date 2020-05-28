@@ -37,14 +37,15 @@ class ListView{
 
 		}
 		$add = $app->urlFor('FormList');
-			echo ("<form action='$add'>");
-			$boutonAjouter = "<input type='submit' action='$add' value='Ajouter Liste'>\n"; 
-			echo($boutonAjouter);
-			echo("</form>");
+		echo ("<form action='$add'>");
+		$boutonAjouter = "<input type='submit' action='$add' value='Ajouter Liste'>\n"; 
+		echo($boutonAjouter);
+		echo("</form>");
 	}
 
 	public function aucuneListe(){
 		echo("<h1>Cet utilisateur n'a aucune liste</h1>");
+		echo("Vous pouvez en ajouter une");
 		$app = \Slim\Slim::getInstance();
 		$add = $app->urlFor('FormList');
 		echo ("<form action='$add'>");

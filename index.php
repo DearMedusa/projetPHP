@@ -24,7 +24,7 @@ require_once 'vendor/autoload.php';
   $app = new \Slim\Slim();
 
   // Affichage de l'interface de connexion
-  $app->get('/', function(){  //get ou post
+  $app->get('/', function(){
     $uc=new UserController();
     $uc::EnteteUser(UserController::getUser(0));
   })->name('home');
@@ -38,7 +38,7 @@ require_once 'vendor/autoload.php';
   })->name('repForm');
 
   // Suppression de liste
-  $app->post('/', function(){//NE FONCTIONNE PAS (trop)
+  $app->post('/', function(){//NE FONCTIONNE PAS ENCORE
     $slim = \Slim\Slim::getInstance();
     $lc= new ListController();
     $lc::supprimerListe();

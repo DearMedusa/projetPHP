@@ -26,10 +26,10 @@
       $view->affichageItem($item);
   }
 
-  function affFormItem(){
-    $view = new ItemView();
-    $view::affFormItem();
-  }
+    function affFormItem(){
+      $view = new ItemView();
+      $view::affFormItem();
+    }
 
     function ajouterItem(){
         $slim = \Slim\Slim::getInstance();
