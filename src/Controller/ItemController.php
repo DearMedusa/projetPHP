@@ -20,7 +20,7 @@
         $view->affichageItems($item);
     }
 
-    function affichageItem($listid){
+    function affichageItem($listid){   //Affiche un item spécifique
       $item = Item::where(['liste_id' => $listid])->get();
       $view = new ItemView();
       $view->affichageItem($item);
@@ -31,6 +31,14 @@
       $view::affFormItem();
     }
 
+    function affBookForm(){
+      $view=new ItemView();
+      $view::affBookForm();
+    }
+
+
+
+
     function ajouterItem(){
         $slim = \Slim\Slim::getInstance();
         $item = new item();
@@ -39,5 +47,11 @@
         $item->liste_id = $slim->request->post('liste_id');
         $item->tarif = $slim->request->post('item_tarif');
         $item->save();
+      }
+
+
+
+      function reservationItem(){
+        
       }
   }
