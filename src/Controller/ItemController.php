@@ -49,7 +49,8 @@
 
       function reservationItem($id){
         $slim = \Slim\Slim::getInstance();
-        $item = Item::find($id);//::where(['id' => $id])->get();
+        $item = Item::where(['id' => $id])->first();
+        echo("<h1>".$item."</h1>");
         $item->reservation = "Vrai";
         $item->save();
       }
