@@ -51,8 +51,16 @@ img{
 	border-radius: 5px 20px 5px 20px;
 }
 
-.infoItem, .encadrementItem{
+.encadrementItem{
 	border:2px solid white;
+	border-radius: 5px 20px 5px 20px;
+	padding: 7px;
+	margin-bottom: 60px;
+	margin-top: 10px;
+}
+
+.infoItem{
+	background-color: RGB(167, 199, 192);
 	border-radius: 5px 20px 5px 20px;
 	padding: 7px;
 	margin-bottom: 60px;
