@@ -38,7 +38,7 @@ class ItemView{
       }
 
       
-      function affFormItem(){
+      function affFormItem($id){
             Outils::headerHTML("Création d'item");
             $slim = \Slim\Slim::getInstance();
             $login = '';
@@ -58,7 +58,7 @@ class ItemView{
             <label for=\"text\">Tarif: </label>
             <input type=\"text\" name='item_tarif'><br>
             <label for=\"dateExp\">Liste d'appartenance: </label>
-            <input type=\"text\" name='liste_id'><br>
+            <input type=\"text\" name='liste_id' value='$id'><br>
             <input type=\"submit\" value=\"Submit\">
             </form>
             </div>");

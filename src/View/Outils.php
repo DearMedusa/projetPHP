@@ -21,7 +21,6 @@ class Outils
     </header>
 
     <div class='content'>
-
 ");
     }
 

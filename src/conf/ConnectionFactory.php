@@ -15,14 +15,11 @@ class ConnectionFactory{
 	    throw new DBException("Erreur");
     }
     
-    
-    public static function makeConnection(){      /** A voir si déplacement dans l'index ???*/
+    public static function makeConnection(){
         $db = new DB();
         $db->addConnection(self::$conf);
         $db->setAsGlobal();
         $db->bootEloquent();
   }
 }
-
-
 ?>
