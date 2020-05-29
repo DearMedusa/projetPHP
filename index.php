@@ -39,12 +39,24 @@ require_once 'vendor/autoload.php';
   })->name('repForm');
 
   // Suppression de liste
-  $app->get('/supp(/:token)', function($token){//NE FONCTIONNE PAS ENCORE
+  $app->get('/supp(/:token)', function($token){
     $slim = \Slim\Slim::getInstance();
     $bi= new ListController();
     $bi::supprimerListe($token);
     $slim->redirect($slim->urlFor('home'));
   })->name('suppList');
+
+
+
+    // Suppression d'item
+  $app->get('/suppItem(/:token)', function($token){
+    $slim = \Slim\Slim::getInstance();
+    $si= new ItemController();
+    $si::supprimerItem($token);
+    $slim->redirect($slim->urlFor('home'));
+  })->name('suppItem');
+
+
 
   // Formulaire d'ajout de liste
   $app->get('/user/FormList', function(){
@@ -68,7 +80,7 @@ require_once 'vendor/autoload.php';
   })->name('booking');
 
   // Ajout d'user
-  $app->post('/user/addList', function(){
+  $app->post('/user/formList/addList', function(){
     $slim = \Slim\Slim::getInstance();
     $lc = new ListController();
     $lc::ajouterList();
