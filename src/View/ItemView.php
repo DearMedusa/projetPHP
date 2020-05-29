@@ -102,10 +102,16 @@ class ItemView{
             $add = $slim->urlFor('booking',array('book_name'=>$id));//action du bouton (changer l'URL)
             echo ("<form action='$add' method = 'post'>
             <label for=\"listTitre\">Votre prénom : </label>
-            <a href=".$slim->urlFor('booking',array('token' => 134)).">Valider</a></br>
+            <a href=".$slim->urlFor('booking',array('token' => $id)).">Valider</a></br>
             </form>");//fin du formulaire
 
             Outils::footerHTML();
+      }
+
+      function ErreurBooked(){
+            Outils::headerHTML("Erreur");
+            echo("<h1>Oups...Il semblerait que cet item ai été réservé par quelqu'un</h1>");
+            Outils::FooterHTML();
       }
 
 }

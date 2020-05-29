@@ -65,17 +65,24 @@
       $item->save();
     }
 
-      // Modifie l'attribut "reservation" d'un item spécifique
-      function reservationItem($id){
-        $slim = \Slim\Slim::getInstance();
-        $item = Item::where(['id' => $id])->first();
-        $item->reservation = "Oui";
-        $item->save();
-      }
+    // Modifie l'attribut "reservation" d'un item spécifique
+    function reservationItem($id){
+      $slim = \Slim\Slim::getInstance();
+      $item = Item::where(['id' => $id])->first();
+      $item->reservation = "Oui";
+      $item->save();
+    }
 
       // Supprime un item à l'id spécifique
       function supprimerItem($id){
+        $slim = \Slim\Slim::getInstance();
         $item = Item::where('id','=',$id)->first();
-        $item->delete();
+        if(isset($item->reservation)){
+          $view=new ItemView();
+          $view::ErreurBooked();
+        }else{
+          $item->delete();
+          $slim->redirect($slim->urlFor('home'));
+        }
       }
   }

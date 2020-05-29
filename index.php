@@ -49,7 +49,6 @@ $app->get('/suppItem(/:token)', function($token){
   $slim = \Slim\Slim::getInstance();
   $si = new ItemController();
   $si::supprimerItem($token);
-  $slim->redirect($slim->urlFor('home'));
 })->name('suppItem');
 
 // Formulaire de modification d'item
@@ -73,7 +72,7 @@ $app->get('/user/FormList(/:token)', function($token){
 })->name('FormList');
 
 // Formulaire de réservation d'item
-$app->get('/user(/:token)', function($token){
+$app->get('/user/book(/:token)', function($token){
   $fr = new ItemController();
   $fr->affBookForm($token);
 })->name('bookForm');
