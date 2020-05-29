@@ -26,12 +26,8 @@ class ListView{
 
 			ItemController::affichageItems($liste[$i]->no);
 
-			//$supp = $app->urlFor('suppList');
-			//echo ("<form action='$supp'>");
-			//$boutonSupprimer = "<input type='submit' action='$supp' value='Supprimer Liste'>\n"; 
-			//echo($boutonSupprimer);
-			//echo("</form>");
-
+			echo("<a href=".$app->urlFor('suppList',array('token' => $liste[$i]->no)).">Supprimer la liste</a>");
+			
 			$add = $app->urlFor('FormItem');
 			echo ("<form action='$add'>
 			<input type='submit' action='$add' value='Ajouter Item'>\n
@@ -50,6 +46,7 @@ class ListView{
 		Outils::headerHTML("Erreur");
 		echo("<h2>Cet utilisateur n'a aucune liste</h2>");
 		echo("Vous pouvez en ajouter une");
+
 		$app = \Slim\Slim::getInstance();
 		$add = $app->urlFor('FormList');
 		echo ("<form action='$add'>");
@@ -57,7 +54,6 @@ class ListView{
 		echo($boutonAjouter);
 		echo("</form>");
 		Outils::footerHTML();
-
 	}
 
 	public function formulaireListe(){

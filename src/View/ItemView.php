@@ -28,7 +28,6 @@ class ItemView{
             echo("<b>Reservé par :</b> ".$item[$i]->reservation);
             echo("</br>");
 
-
             //echo("<input type ='text' name='itemid' value='".$item[$i]->id."'>");//METTRE EN HIDDEN
             echo("<a href=".$app->urlFor('bookForm',array('token' => $item[$i]->id)).">Resrver</a>");
 

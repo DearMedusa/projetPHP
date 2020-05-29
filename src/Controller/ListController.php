@@ -55,10 +55,10 @@
     }
 
     // Suppression de la liste spécifiée
-    //public function supprimerListe($id){
-    //$list = Liste::where('no','=',$id)->first();
-    //$list->delete();
-    //}
+    public function supprimerListe($id){
+    $list = Liste::where('no','=',$id)->first();
+    $list->delete();
+    }
   }
 
 ?>
