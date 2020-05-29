@@ -29,11 +29,11 @@ class ItemView{
             echo("</br>");
 
             //echo("<input type ='text' name='itemid' value='".$item[$i]->id."'>");//METTRE EN HIDDEN
-            echo("<div class='lien'><a href=".$app->urlFor('bookForm',array('token' => $item[$i]->id)).">Réserver l'item</a>");
+            echo("<div class='lien'><a href=".$app->urlFor('bookForm',array('token' => $item[$i]->id)).">Réserver l'item</a></div>");
 
-            echo("<div class='lien'><a href=".$app->urlFor('modForm',array('token' => $item[$i]->id)).">Modifier l'item</a>");
+            echo("<div class='lien'><a href=".$app->urlFor('modForm',array('token' => $item[$i]->id)).">Modifier l'item</a></div>");
 
-            echo("<a href=".$app->urlFor('suppItem',array('token' => $item[$i]->id)).">Supprimer  l'item</a></div>");
+            echo("<div class='lien'><a href=".$app->urlFor('suppItem',array('token' => $item[$i]->id)).">Supprimer  l'item</a></div>");
 
             echo("</div>");
             }

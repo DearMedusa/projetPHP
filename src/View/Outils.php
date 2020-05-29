@@ -8,20 +8,19 @@ class Outils
     {
         echo(
         "<!DOCTYPE html>
-<html lang='fr'>
-<head>
-    <meta charset='UTF-8'>
-    <title>$titre</title>
-    <link rel=\"stylesheet\" href=\"css\style.css\">
-</head>
+        <html lang='fr'>
+            <head>
+                <meta charset='UTF-8'>
+                <title>$titre</title>
+                <link rel=\"stylesheet\" href=\"css\style.css\">
+            </head>
 
-<body>
-    <header>
-        <h1>Wishlist</h1>
-    </header>
+            <body>
+                <header>
+                    <h1>Wishlist</h1>
+                </header>
 
-    <div class='content'>
-");
+    <div class='content'>");
     }
 
 
