@@ -109,7 +109,7 @@ class ItemView{
 
       function ErreurBooked(){
             Outils::headerHTML("Erreur");
-            echo("<h1>Oups...Il semblerait que cet item ai été réservé par quelqu'un</h1>");
+            echo("<h2>Oups...Il semblerait que cet item ai été réservé par quelqu'un</h2>");
             Outils::FooterHTML();
       }
 

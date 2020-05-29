@@ -12,7 +12,7 @@ class Outils
             <head>
                 <meta charset='UTF-8'>
                 <title>$titre</title>
-                <link rel=\"stylesheet\" href=\"css\style.css\">
+                <link rel=\"stylesheet\" href=\"style.css\">
             </head>
 
             <body>

@@ -73,16 +73,16 @@
       $item->save();
     }
 
-      // Supprime un item à l'id spécifique
-      function supprimerItem($id){
-        $slim = \Slim\Slim::getInstance();
-        $item = Item::where('id','=',$id)->first();
-        if(isset($item->reservation)){
-          $view=new ItemView();
-          $view::ErreurBooked();
-        }else{
-          $item->delete();
-          $slim->redirect($slim->urlFor('home'));
-        }
+    // Supprime un item à l'id spécifique
+    function supprimerItem($id){
+      $slim = \Slim\Slim::getInstance();
+      $item = Item::where('id','=',$id)->first();
+      if(isset($item->reservation)){
+        $view = new ItemView();
+        $view->ErreurBooked();
+      }else{
+        $item->delete();
+        $slim->redirect($slim->urlFor('home'));
       }
+    }
   }

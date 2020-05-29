@@ -37,7 +37,7 @@ $app->get('/user', function(){
 })->name('repForm');
 
 // Suppression de liste
-$app->get('/supp(/:token)', function($token){
+$app->get('/supp(:token)', function($token){
   $slim = \Slim\Slim::getInstance();
   $sl = new ListController();
   $sl::supprimerListe($token);
@@ -45,20 +45,20 @@ $app->get('/supp(/:token)', function($token){
 })->name('suppList');
 
 // Suppression d'item
-$app->get('/suppItem(/:token)', function($token){
+$app->get('/suppItem(:token)', function($token){
   $slim = \Slim\Slim::getInstance();
   $si = new ItemController();
   $si::supprimerItem($token);
 })->name('suppItem');
 
 // Formulaire de modification d'item
-$app->get('/modForm(/:token)', function($token){
+$app->get('/modForm(:token)', function($token){
   $fr = new ItemController();
   $fr->affModFormItem($token);
 })->name('modForm');
 
 // Modification d'item
-$app->post('/modForm/item(/:token)', function($token){
+$app->post('/modForm/item(:token)', function($token){
   $slim = \Slim\Slim::getInstance();
   $mi = new ItemController();
   $mi::modifierItem($token);
@@ -66,19 +66,19 @@ $app->post('/modForm/item(/:token)', function($token){
 })->name('modItem');
 
 // Formulaire d'ajout de liste
-$app->get('/user/FormList(/:token)', function($token){
+$app->get('/user/FormList(:token)', function($token){
   $af = new ListController();
   $af::affFormList($token);
 })->name('FormList');
 
 // Formulaire de réservation d'item
-$app->get('/user/book(/:token)', function($token){
+$app->get('/user/book(:token)', function($token){
   $fr = new ItemController();
   $fr->affBookForm($token);
 })->name('bookForm');
 
 // Réservation d'item
-$app->get('/user/item(/:token)', function($token){
+$app->get('/user/item(:token)', function($token){
   $slim = \Slim\Slim::getInstance();
   $ri = new ItemController();
   $ri::reservationItem($token);
@@ -101,7 +101,7 @@ $app->get('/inscription', function(){
 })->name('inscription');
 
 // Formulaire de création d'item
-$app->get('/FormItem(/:token)', function($token){
+$app->get('/FormItem(:token)', function($token){
   $slim = \Slim\Slim::getInstance();
   $it = new ItemController();
   $it::affFormItem($token);
