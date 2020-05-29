@@ -30,8 +30,8 @@ class Outils
     {
         echo(
         "</div>
-        <footer> de Bigault de Granrut - Martin <br> IUT Nancy-Charlemagne</footer></body>
-</html>");
+        <footer> de Granrut - Martin <br> IUT Nancy-Charlemagne <br> Année 2019-2020 </footer></body>
+        </html>");
     }
 }
 

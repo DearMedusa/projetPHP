@@ -19,6 +19,7 @@ ConnectionFactory::makeConnection();
       $action = $app->urlFor('repForm');
       $content = "\n";
       $content .= "  <!-- Connection form -->\n";
+      echo("<div class='HomeEntete'>Connexion</div>");
       echo "<form method='GET' action='$action'>
             <select name='user'>
             <option value=''>Choisir un utilisateur</option>";
@@ -30,8 +31,8 @@ ConnectionFactory::makeConnection();
         echo "<option value='".$UserId."'>".$nomUser."</option> \n";//une option par user
       }
 
-      $content .= "<input type='submit' value='Connexion'>\n";
-      $content .= "<a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscription</a>\n";
+      $content .= "<input type='submit' value='Connexion'></br>\n";
+      $content .= "<i>Vous n'avez pas de compte ? </i><a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscrivez vous</a>\n";
       $content .= "</form>\n";
       echo $content;
       Outils::footerHTML();
