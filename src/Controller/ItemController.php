@@ -38,6 +38,11 @@
       $view::affBookForm($id);
     }
 
+    function affModFormItem($id){
+      $view=new ItemView();
+      $view::affModFormItem($id);
+    }
+
     // Ajoute une ligne à la base de donnée dans la table item
     function ajouterItem(){
         $slim = \Slim\Slim::getInstance();
@@ -48,6 +53,17 @@
         $item->tarif = $slim->request->post('item_tarif');
         $item->save();
       }
+
+      // Ajoute une ligne à la base de donnée dans la table item
+    function modifierItem($id){
+      $slim = \Slim\Slim::getInstance();
+      $item = Item::where(['id' => $id])->first();
+      $item->nom = $slim->request->post('itemMod_nom');
+      $item->descr = $slim->request->post('itemMod_description');
+      //$item->img = $slim->request->post('itemMod_img');
+      $item->tarif = $slim->request->post('itemMod_tarif');
+      $item->save();
+    }
 
       // Modifie l'attribut "reservation" d'un item spécifique
       function reservationItem($id){

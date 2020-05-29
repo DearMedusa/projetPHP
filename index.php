@@ -52,6 +52,20 @@ $app->get('/suppItem(/:token)', function($token){
   $slim->redirect($slim->urlFor('home'));
 })->name('suppItem');
 
+// Formulaire de modification d'item
+$app->get('/modForm(/:token)', function($token){
+  $fr = new ItemController();
+  $fr->affModFormItem($token);
+})->name('modForm');
+
+// Modification d'item
+$app->post('/modForm/item(/:token)', function($token){
+  $slim = \Slim\Slim::getInstance();
+  $mi = new ItemController();
+  $mi::modifierItem($token);
+  $slim->redirect($slim->urlFor('home'));
+})->name('modItem');
+
 // Formulaire d'ajout de liste
 $app->get('/user/FormList(/:token)', function($token){
   $af = new ListController();

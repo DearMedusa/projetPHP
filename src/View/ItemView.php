@@ -3,7 +3,7 @@
 namespace PHPProject\View;
 use \PHPProject\controller\UserController as UserController;
 use \PHPProject\View\Outils;
-
+use \PHPProject\models\Item;
 
 class ItemView{
 
@@ -31,17 +31,17 @@ class ItemView{
             //echo("<input type ='text' name='itemid' value='".$item[$i]->id."'>");//METTRE EN HIDDEN
             echo("<div class='lien'><a href=".$app->urlFor('bookForm',array('token' => $item[$i]->id)).">Réserver l'item</a>");
 
+            echo("<div class='lien'><a href=".$app->urlFor('modForm',array('token' => $item[$i]->id)).">Modifier l'item</a>");
+
             echo("<a href=".$app->urlFor('suppItem',array('token' => $item[$i]->id)).">Supprimer  l'item</a></div>");
 
             echo("</div>");
             }
       }
-
-      
+ 
       function affFormItem($id){
             Outils::headerHTML("Création d'item");
             $slim = \Slim\Slim::getInstance();
-            $login = '';
             echo("<h1>Formulaire d'ajout d'item</h1>");
             echo("Veuillez remplir les champs suivants : </br>");
             
@@ -65,7 +65,33 @@ class ItemView{
             Outils::footerHTML();
       }
 
-
+      // Formulaire de modification
+      function affModFormItem($id){
+            Outils::headerHTML("Modification d'item");
+            $slim = \Slim\Slim::getInstance();
+            $item = Item::where('id','=', $id)->first();
+            echo("<h1>Formulaire de modification d'item</h1>");
+            echo("Veuillez remplir les champs suivants : </br>");
+            
+            $add = $slim->urlFor('modItem',array('token' => $id));    //action du bouton (changer l'URL)
+            echo (
+            "<div class='encadrementItem'>
+            <form action='$add' method = 'post'>
+            <label for=\"listTitre\">Nom: </label>
+            <input type=\"text\" name='itemMod_nom' value = '$item->nom'><br>
+            <label for=\"descriptionListe\">Description: </label>
+            <input type=\"text\" name='itemMod_description' value = '$item->descr'><br>
+            <label for=\"descriptionListe\">Image: </label>
+            <input type=\"text\" name='itemMod_img' value = '$item->img'><br>
+            <label for=\"text\">Tarif: </label>
+            <input type=\"text\" name='itemMod_tarif' value = '$item->tarif'><br>
+            <label for=\"dateExp\">Liste d'appartenance: </label>
+            <input type=\"text\" name='liste_id' value='$id'><br>
+            <input type=\"submit\" value=\"Submit\">
+            </form>
+            </div>");
+            Outils::footerHTML();
+      }
 
       function affBookForm($id){
             Outils::headerHTML("Réservation d'item");
@@ -76,7 +102,7 @@ class ItemView{
             $add = $slim->urlFor('booking',array('book_name'=>$id));//action du bouton (changer l'URL)
             echo ("<form action='$add' method = 'post'>
             <label for=\"listTitre\">Votre prénom : </label>
-            <a href=".$slim->urlFor('booking',array('token' => $id)).">Valider</a></br>
+            <a href=".$slim->urlFor('booking',array('token' => 134)).">Valider</a></br>
             </form>");//fin du formulaire
 
             Outils::footerHTML();
