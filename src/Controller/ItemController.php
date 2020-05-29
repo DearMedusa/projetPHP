@@ -51,7 +51,13 @@
         $slim = \Slim\Slim::getInstance();
         $item = Item::where(['id' => $id])->first();
         echo("<h1>".$item."</h1>");
-        $item->reservation = "Vrai";
+        $item->reservation = "Oui";
         $item->save();
+      }
+
+
+      function supprimerItem($id){
+        $item = Item::where('id','=',$id)->first();
+        $item->delete();
       }
   }

@@ -31,7 +31,7 @@ class ListView{
 			$add = $app->urlFor('FormItem');
 			echo ("<form action='$add'>
 			<input type='submit' action='$add' value='Ajouter Item'>\n
-			</form>");
+			</form><hr>");
 
 		}
 		$add = $app->urlFor('FormList');
@@ -41,6 +41,26 @@ class ListView{
 		echo("</form>");
 		Outils::footerHTML();
 	}
+
+
+public function formulaireListe(){
+		
+		Outils::headerHTML("Création de liste");
+		$slim = \Slim\Slim::getInstance();
+		$add = $slim->urlFor('addList');
+		echo("<h1>Formulaire de création d'une liste</h1>Veuillez remplir tous les champs suivants : </br><form action='$add' method = 'post'>
+			  <label for=\"listTitre\">Titre de la liste: </label>
+  			  <input type=\"text\" name='liste_titre'><br>
+  			  <label for=\"descriptionListe\">Description de la liste: </label>
+  		      <input type=\"text\" name='liste_description'><br>
+  			  <label for=\"dateExp\">Date d'expiration: </label>
+			  <input type=\"date\" name='liste_date'><br>
+			  <label for=\"dateExp\">Propriétaire de la liste: </label>
+  			  <input type=\"text\" name='liste_proprietaire'><br>
+			  <input type=\"submit\" value=\"Submit\"></form>");
+		Outils::footerHTML();
+	}
+	
 
 	public function aucuneListe(){
 		Outils::headerHTML("Erreur");
@@ -56,22 +76,6 @@ class ListView{
 		Outils::footerHTML();
 	}
 
-	public function formulaireListe(){
-		$slim = \Slim\Slim::getInstance();
-		Outils::headerHTML("Création de liste");
-		
-		$add = $slim->urlFor('addList');
-		echo("<h1>Formulaire de création d'une liste</h1>Veuillez remplir tous les champs suivants : </br><form action='$add' method = 'post'>
-			  <label for=\"listTitre\">Titre de la liste: </label>
-  			  <input type=\"text\" name='liste_titre'><br>
-  			  <label for=\"descriptionListe\">Description de la liste: </label>
-  		      <input type=\"text\" name='liste_description'><br>
-  			  <label for=\"dateExp\">Date d'expiration: </label>
-			  <input type=\"date\" name='liste_date'><br>
-			  <label for=\"dateExp\">Propriétaire de la liste: </label>
-  			  <input type=\"text\" name='liste_proprietaire'><br>
-			  <input type=\"submit\" value=\"Submit\"></form>");
-		Outils::footerHTML();
-	}
+	
 }
 ?>
