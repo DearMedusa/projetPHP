@@ -71,24 +71,3 @@ footer{
 }
 
 
-a{
-	background-color: RGB(230, 211, 157);
-	text-decoration: none;
-	color:black;
-	box-shadow: 1px 1px RGB(147, 179, 172);
-	margin-left:2px;
-	margin-right: 2px;
-	paddin
-}
-
-
-a:hover{
-	box-shadow: 3px 3px RGB(147, 179, 172);
-
-}
-
-.lien{
-	margin-top: 6px;
-	text-align: center;
-}
-
