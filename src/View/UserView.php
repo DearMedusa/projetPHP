@@ -13,14 +13,10 @@ ConnectionFactory::makeConnection();
   public static function EnteteUser(){//affiche le formulaire de connexion/d'inscription
   Outils::headerHTML("Page principale");
 
-
-      $content = "";
       $app = \Slim\Slim::getInstance();
       $action = $app->urlFor('repForm');
-      $content = "\n";
-      $content .= "  <!-- Connection form -->\n";
       echo("<div class='HomeEntete'>Connexion</div>");
-      echo "<form method='GET' action='$action'>
+      echo "<div class ='cadreConnexion'><form method='GET' action='$action'>
             <select name='user'>
             <option value=''>Choisir un utilisateur</option>";
       $Liste = User::select('login', 'id')->get(); // il s'agit de la classe 
@@ -31,10 +27,9 @@ ConnectionFactory::makeConnection();
         echo "<option value='".$UserId."'>".$nomUser."</option> \n";//une option par user
       }
 
-      $content .= "<input type='submit' value='Connexion'></br>\n";
-      $content .= "<i>Vous n'avez pas de compte ? </i><a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscrivez vous</a>\n";
-      $content .= "</form>\n";
-      echo $content;
+      echo("<input type='submit' value='Connexion'></br>");
+      echo("<i>Vous n'avez pas de compte ? </i><a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscrivez vous</a>");
+      echo("</form></div>");
       Outils::footerHTML();
     }
     
