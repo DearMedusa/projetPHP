@@ -70,6 +70,10 @@ img{
 	margin-top: 10px;
 }
 
+.boutonItem{
+	display: flex;
+}
+
 .cadreConnexion{
 	border:2px solid white;
 	border-radius: 5px 20px 5px 20px;
