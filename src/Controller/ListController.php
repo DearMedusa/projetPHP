@@ -20,14 +20,9 @@
       $list->save();
     }
 
-    public function affFormList(){
+    public function affFormList($id){
       $view = new ListView();
-      $view->formulaireListe();
-    }
-
-    //edition de liste (LVL 2)
-    public function editList(){
-      // a voir plus tard
+      $view->formulaireListe($id);
     }
 
     public function getListUser($idList){
@@ -35,22 +30,16 @@
       return $liste->user_id; 
     }
 
-    //cette fonction nous permet d'afficher les items d'une liste sans connaitre le user
-    /*public function getItems($idList) {// A TESTER---------------------------------------
-      $item = Item::where('liste_id','=', $idList)->get();
-      return $item; 
-    }*/
-
-
     //affichage de liste
     public function affichageListe($idUser){
       //appel de listView avec en parametre la liste qui correspond à l'id $id
       $view = new ListView();
       $wishlist = Liste::where('user_id','=',$idUser)->first();
+      $user = User::where('id','=',$idUser)->first();
       if ($wishlist != null){
         $view->affichageListe(User::where('id','=', $idUser)->first());
       }else{
-        $view->aucuneListe();
+        $view->aucuneListe($user);
       }
     }
 

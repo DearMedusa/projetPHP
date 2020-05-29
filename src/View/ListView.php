@@ -34,16 +34,12 @@ class ListView{
 			</form><hr>");
 
 		}
-		$add = $app->urlFor('FormList');
-		echo ("<form action='$add'>");
-		$boutonAjouter = "<input type='submit' action='$add' value='Ajouter Liste'>\n"; 
-		echo($boutonAjouter);
-		echo("</form>");
+		echo("<a href=".$app->urlFor('FormList',array('token' => $user->id)).">Ajouter une liste</a>"); 
 		Outils::footerHTML();
 	}
 
 
-public function formulaireListe(){
+public function formulaireListe($id){
 		
 		Outils::headerHTML("Création de liste");
 		$slim = \Slim\Slim::getInstance();
@@ -56,23 +52,20 @@ public function formulaireListe(){
   			  <label for=\"dateExp\">Date d'expiration: </label>
 			  <input type=\"date\" name='liste_date'><br>
 			  <label for=\"dateExp\">Propriétaire de la liste: </label>
-  			  <input type=\"text\" name='liste_proprietaire'><br>
-			  <input type=\"submit\" value=\"Submit\"></form>");
+  			  <input type=\"text\" name='liste_proprietaire' value=$id><br>
+			  <input type=\"submit\" value=\"Submit\">
+			   </form>");
 		Outils::footerHTML();
 	}
 	
 
-	public function aucuneListe(){
+	public function aucuneListe($user){
 		Outils::headerHTML("Erreur");
 		echo("<h2>Cet utilisateur n'a aucune liste</h2>");
 		echo("Vous pouvez en ajouter une");
 
 		$app = \Slim\Slim::getInstance();
-		$add = $app->urlFor('FormList');
-		echo ("<form action='$add'>");
-		$boutonAjouter = "<input type='submit' action='$add' value='Ajouter Liste'>\n"; 
-		echo($boutonAjouter);
-		echo("</form>");
+		echo("<a href=".$app->urlFor('FormList',array('token' => $user->id)).">Ajouter une liste</a>"); 
 		Outils::footerHTML();
 	}
 

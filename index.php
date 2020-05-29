@@ -46,8 +46,6 @@ require_once 'vendor/autoload.php';
     $slim->redirect($slim->urlFor('home'));
   })->name('suppList');
 
-
-
     // Suppression d'item
   $app->get('/suppItem(/:token)', function($token){
     $slim = \Slim\Slim::getInstance();
@@ -56,12 +54,10 @@ require_once 'vendor/autoload.php';
     $slim->redirect($slim->urlFor('home'));
   })->name('suppItem');
 
-
-
   // Formulaire d'ajout de liste
-  $app->get('/user/FormList', function(){
+  $app->get('/user/FormList(/:token)', function($token){
     $lc = new ListController();
-    $lc::affFormList();
+    $lc::affFormList($token);
   })->name('FormList');
 
  // Formulaire de réservation d'item
@@ -79,7 +75,7 @@ require_once 'vendor/autoload.php';
     $slim->redirect($slim->urlFor('home'));
   })->name('booking');
 
-  // Ajout d'user
+  // Ajout de liste
   $app->post('/user/formList/addList', function(){
     $slim = \Slim\Slim::getInstance();
     $lc = new ListController();
