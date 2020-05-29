@@ -28,6 +28,10 @@ header{
 	font-weight: bold;
 	font-size: 35px;
 	margin-bottom: 50px;
+	border:2px solid white;
+	border-radius: 5px 20px 5px 20px;
+	max-width: 300px;;
+	padding: 7px;
 }
 
 
@@ -72,7 +76,6 @@ input{
 	border-radius: 5px 20px 5px 20px;
 }
 
-
 footer{
 	text-align: center;
 	border-radius: 5px 20px 5px 20px;
@@ -80,7 +83,6 @@ footer{
 	background-color: RGB(230, 211, 157);
 	
 }
-
 
 a{
 	background-color: RGB(230, 211, 157);
@@ -90,7 +92,6 @@ a{
 	margin-left:2px;
 	margin-right: 2px;
 }
-
 
 a:hover{
 	box-shadow: 3px 3px RGB(147, 179, 172);
