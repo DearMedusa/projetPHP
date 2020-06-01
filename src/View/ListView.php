@@ -95,7 +95,7 @@ class ListView{
 			<input type=\"date\" name='liste_date' value = '$list->expiration'><br>
 			<label for=\"dateExp\">Propriétaire de la liste: </label>
 			<input type=\"text\" name='liste_proprietaire' value=$id><br>
-			<label for=\"checkbox\">Publique: </label><br>
+			<label for=\"checkbox\">Publique: </label>
 			<input type=\"checkbox\" name=\"liste_publique\" value ='1' ><br>
 			<input type=\"submit\" value=\"Modifier\">
 			</form>");
