@@ -30,6 +30,11 @@ class UserView{
     echo("<input type='submit' value='Connexion'></br>");
     echo("<i>Vous n'avez pas de compte ? </i><a id='inscriptionLink' href='".$app->urlFor('inscription')."'>Inscrivez vous</a>");
     echo("</form></div>");
+    
+    echo("<div class ='cadre'>");
+    echo("<a id='inscriptionLink' href='".$app->urlFor('allItems')."'>Consulter les objets existants</a>");
+    echo("</div>");
+
     Outils::footerHTML();
     }
     

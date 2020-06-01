@@ -130,5 +130,12 @@ $app->get('/affItem', function(){
   $ail::affichageItem(1);
 })->name('affItem');
 
+// Affichage des items d'une liste
+$app->get('/allItems', function(){
+  $slim = \Slim\Slim::getInstance();
+  $ail = new ItemController();
+  $ail::affichageAllItems();
+})->name('allItems');
+
 $app->run();
 ?>

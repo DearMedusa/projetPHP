@@ -38,6 +38,12 @@
       $view::affBookForm($id);
     }
 
+    // Affichage de tous les items de la bdd
+    function affichageAllItems(){
+      $view=new ItemView();
+      $view::affichageAllItems();
+    }
+
     function affModFormItem($id){
       $view=new ItemView();
       $view::affModFormItem($id);
