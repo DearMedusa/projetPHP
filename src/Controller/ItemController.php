@@ -61,7 +61,7 @@
         $item->save();
       }
 
-      // Ajoute une ligne à la base de donnée dans la table item
+      // Modifie une ligne à la base de donnée dans la table item
     function modifierItem($id){
       $slim = \Slim\Slim::getInstance();
       $item = Item::where(['id' => $id])->first();

@@ -25,6 +25,22 @@
       $view->formulaireListe($id);
     }
 
+    // Appelle l'affichage du formulaire de modification de liste
+    function affModFormList($id){
+      $view=new ListView();
+      $view::affModFormList($id);
+    }
+
+    // Modifie une ligne à la base de donnée dans la table liste
+    function modifierList($id){
+      $slim = \Slim\Slim::getInstance();
+      $list = Liste::where(['no' => $id])->first();
+      $list->titre = $slim->request->post('liste_titre');
+      $list->description = $slim->request->post('liste_description');;
+      $list->expiration = $slim->request->post('liste_date');
+      $list->save();
+    }
+
     // Retourne le propriétaire d'une liste spécifique
     public function getListUser($idList){
       $liste = Liste::where('no','=', $idList)->first();

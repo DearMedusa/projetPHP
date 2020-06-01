@@ -27,8 +27,9 @@ class ListView{
 
 			ItemController::affichageItems($liste[$i]->no);
 
-			echo("<a href=".$app->urlFor('suppList',array('token' => $liste[$i]->no)).">Supprimer la liste</a>");
-			echo("<a href=".$app->urlFor('FormItem',array('token' => $liste[$i]->no)).">Ajouter un item</a>"); 
+			echo("<a href=".$app->urlFor('ListFormMod',array('token' => $liste[$i]->no)).">Modifier la liste</a>");
+			echo("<a href=".$app->urlFor('FormItem',array('token' => $liste[$i]->no)).">Ajouter un item</a>");
+			echo("<a href=".$app->urlFor('suppList',array('token' => $liste[$i]->no)).">Supprimer la liste</a>"); 
 		}
 		echo("<a href=".$app->urlFor('FormList',array('token' => $user->id)).">Ajouter une liste</a>"); 
 		Outils::footerHTML();
@@ -62,5 +63,25 @@ class ListView{
 		echo("<a href=".$app->urlFor('FormList',array('token' => $user->id)).">Ajouter une liste</a>"); 
 		Outils::footerHTML();
 	}
+
+	public function affModFormList($id){
+		Outils::headerHTML("Modification de liste");
+		$slim = \Slim\Slim::getInstance();
+		$list = Liste::where('no','=',$id)->first();
+		$add = $slim->urlFor('modList',array('token' => $id));
+		echo("<h1>Formulaire de création d'une liste</h1>Veuillez remplir tous les champs suivants : </br><form action='$add' method = 'post'>
+			<label for=\"listTitre\">Titre de la liste: </label>
+			<input type=\"text\" name='liste_titre' value = '$list->titre'><br>
+			<label for=\"descriptionListe\">Description de la liste: </label>
+			<input type=\"text\" name='liste_description' value = '$list->description'><br>
+			<label for=\"dateExp\">Date d'expiration: </label>
+			<input type=\"date\" name='liste_date' value = '$list->expiration'><br>
+			<label for=\"dateExp\">Propriétaire de la liste: </label>
+			<input type=\"text\" name='liste_proprietaire' value=$id><br>
+			<input type=\"submit\" value=\"Submit\">
+			</form>");
+		Outils::footerHTML();
+	}
+
 }
 ?>
