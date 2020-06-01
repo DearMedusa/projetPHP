@@ -58,6 +58,7 @@
         $item->liste_id = $slim->request->post('liste_id');
         $item->tarif = $slim->request->post('item_tarif');
         $item->lien = $slim->request->post('item_lien');
+        $item->img=$slim->request->post('item_img');
         $item->save();
       }
 
@@ -67,7 +68,7 @@
       $item = Item::where(['id' => $id])->first();
       $item->nom = $slim->request->post('itemMod_nom');
       $item->descr = $slim->request->post('itemMod_description');
-      //$item->img = $slim->request->post('itemMod_img');
+      $item->img = $slim->request->post('itemMod_img');
       $item->tarif = $slim->request->post('itemMod_tarif');
       $item->lien = $slim->request->post('item_lien');
       $item->save();
