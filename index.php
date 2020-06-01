@@ -51,6 +51,14 @@ $app->get('/suppItem/(:token)', function($token){
   $si::supprimerItem($token);
 })->name('suppItem');
 
+// Suppression d'user
+$app->get('/suppUser/(:token)', function($token){
+  $slim = \Slim\Slim::getInstance();
+  $si = new UserController();
+  $si::supprimerUser($token);
+  $slim->redirect($slim->urlFor('home'));
+})->name('suppUser');
+
 // Formulaire de modification d'item
 $app->get('/modForm(:token)', function($token){
   $fr = new ItemController();
@@ -80,7 +88,7 @@ $app->post('/ListFormMod/List(:token)', function($token){
 })->name('modList');
 
 // Formulaire d'ajout de liste
-$app->get('/user/FormList(:token)', function($token){
+$app->get('/FormList(:token)', function($token){
   $af = new ListController();
   $af::affFormList($token);
 })->name('FormList');
@@ -100,7 +108,7 @@ $app->get('/user/item(:token)', function($token){
 })->name('booking');
 
 // Ajout de liste
-$app->post('/user/formList/addList', function(){
+$app->post('/addList', function(){
   $slim = \Slim\Slim::getInstance();
   $aj = new ListController();
   $aj::ajouterList();

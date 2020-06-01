@@ -31,7 +31,8 @@ class ListView{
 			echo("<a href=".$app->urlFor('FormItem',array('token' => $liste[$i]->no)).">Ajouter un item</a>");
 			echo("<a href=".$app->urlFor('suppList',array('token' => $liste[$i]->no)).">Supprimer la liste</a>"); 
 		}
-		echo("<a href=".$app->urlFor('FormList',array('token' => $user->id)).">Ajouter une liste</a>"); 
+		echo("<a href=".$app->urlFor('FormList',array('token' => $user->id)).">Ajouter une liste</a>");
+		echo("<a href=".$app->urlFor('suppUser',array('token' => $user->id)).">Supprimer ce compte</a>"); 
 		Outils::footerHTML();
 	}
 
@@ -41,7 +42,7 @@ class ListView{
 		$slim = \Slim\Slim::getInstance();
 		$add = $slim->urlFor('addList');
 		echo("<h1>Formulaire de création d'une liste</h1>Veuillez remplir tous les champs suivants : </br><form action='$add' method = 'post'>
-			<label for=\"listTitre\">Titre de la liste: </label>
+			<div class='encadrementItem'><label for=\"listTitre\">Titre de la liste: </label>
 			<input type=\"text\" name='liste_titre'><br>
 			<label for=\"descriptionListe\">Description de la liste: </label>
 			<input type=\"text\" name='liste_description'><br>
@@ -49,8 +50,8 @@ class ListView{
 			<input type=\"date\" name='liste_date'><br>
 			<label for=\"dateExp\">Propriétaire de la liste: </label>
 			<input type=\"text\" name='liste_proprietaire' value=$id><br>
-			<input type=\"submit\" value=\"Submit\">
-			</form>");
+			<input type=\"submit\" value=\"Valider\">
+			</form></div>");
 		Outils::footerHTML();
 		}
 
@@ -60,7 +61,8 @@ class ListView{
 		echo("<h2>Cet utilisateur n'a aucune liste</h2>");
 		echo("Vous pouvez en ajouter une: ");
 		$app = \Slim\Slim::getInstance();
-		echo("<a href=".$app->urlFor('FormList',array('token' => $user->id)).">Ajouter une liste</a>"); 
+		echo("<a href=".$app->urlFor('FormList',array('token' => $user->id)).">Ajouter une liste</a>");
+		echo("<a href=".$app->urlFor('suppUser',array('token' => $user->id)).">Supprimer ce compte</a>");  
 		Outils::footerHTML();
 	}
 

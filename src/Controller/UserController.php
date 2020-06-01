@@ -17,6 +17,12 @@ class UserController{
 	    UserView::inscription();
 	}
 
+	public function supprimerUser($id){
+		$slim = \Slim\Slim::getInstance();
+		$user = User::where('id','=',$id)->first();
+		$user->delete();  
+	}
+
 	// Ajoute une ligne dans la base de donnée user
 	function ajouterUser(){
 		$slim = \Slim\Slim::getInstance();
