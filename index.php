@@ -45,7 +45,7 @@ $app->get('/supp(:token)', function($token){
 })->name('suppList');
 
 // Suppression d'item
-$app->get('/suppItem(:token)', function($token){
+$app->get('/suppItem/(:token)', function($token){
   $slim = \Slim\Slim::getInstance();
   $si = new ItemController();
   $si::supprimerItem($token);
