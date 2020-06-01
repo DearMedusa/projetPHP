@@ -94,7 +94,7 @@ $app->get('/FormList(:token)', function($token){
 })->name('FormList');
 
 // Formulaire de réservation d'item
-$app->get('/user/book(:token)', function($token){
+$app->get('/book(:token)', function($token){
   $fr = new ItemController();
   $fr->affBookForm($token);
 })->name('bookForm');
