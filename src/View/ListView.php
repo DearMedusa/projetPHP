@@ -80,7 +80,7 @@ class ListView{
 			<input type=\"date\" name='liste_date' value = '$list->expiration'><br>
 			<label for=\"dateExp\">Propriétaire de la liste: </label>
 			<input type=\"text\" name='liste_proprietaire' value=$id><br>
-			<input type=\"submit\" value=\"Submit\">
+			<input type=\"submit\" value=\"Modifier\">
 			</form>");
 		Outils::footerHTML();
 	}
