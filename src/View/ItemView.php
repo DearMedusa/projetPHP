@@ -24,7 +24,9 @@ class ItemView{
                   echo('<b>Nom :</b> '.$item[$i]->nom."</br>");
                   echo('<b>Description</b> : '.$item[$i]->descr."</br>");
                   echo('<b>Tarif :</b> '.$item[$i]->tarif."€ </br>");
-                  echo("<a href='".$item[$i]->lien."'>Lien externe</a></br>");
+                  if(isset($item[$i]->lien)){
+                        echo("<a href='".$item[$i]->lien."'>Lien externe</a></br>");
+                  }
                   echo("<b>Reservé :</b> ".$item[$i]->reservation);
                   echo("</br>");
                   
@@ -72,7 +74,7 @@ class ItemView{
             <input type=\"text\" name='liste_id' value='$id'><br>
             <label for=\"dateExp\">Lien vers site exterieur: </label>
             <input type=\"text\" name='item_lien'><br>
-            <input type=\"submit\" value=\"Submit\">
+            <input type=\"submit\" value=\"Ajouter\">
             </form>
             </div>");
             Outils::footerHTML();
@@ -102,7 +104,7 @@ class ItemView{
             <input type=\"text\" name='liste_id' value='$id'><br>
             <label for=\"dateExp\">Lien vers site exterieur: </label>
             <input type=\"text\" name='item_lien' value='$item->lien'><br>
-            <input type=\"submit\" value=\"Submit\">
+            <input type=\"submit\" value=\"Modifier\">
             </form>
             </div>");
             Outils::footerHTML();
@@ -125,8 +127,8 @@ class ItemView{
 
       function ErreurBooked(){
             Outils::headerHTML("Erreur");
-            echo("<h2>Oups...Il semblerait que cet item ai été réservé par quelqu'un</h2>");
-            Outils::FooterHTML();
+            echo ("<h1> Erreur 420</h1>");
+            echo("<h2>Oups... Il semblerait que cet item ai été réservé par quelqu'un</h2>");
       }
 
 }
