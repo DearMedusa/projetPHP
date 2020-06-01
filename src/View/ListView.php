@@ -36,6 +36,19 @@ class ListView{
 		Outils::footerHTML();
 	}
 
+	public function affichageAllPublic($tab){
+		Outils::headerHTML("Affichage de la liste");
+		$app = \Slim\Slim::getInstance();
+		$max = count($tab);
+
+		echo("<div class='listeEntete'>Liste(s) publique(s)</div>");
+
+		for ($i = 0; $i < $max; $i++) {//Pour toutes les listes d' l'utilisateur
+			echo('<h3>Titre : <i>'.$tab[$i]->titre."</i></h3></br>");
+		}
+		Outils::footerHTML();
+	}
+
 	// Affichage du formulaire de création de liste
 	public function formulaireListe($id){
 		Outils::headerHTML("Création de liste");
@@ -50,6 +63,8 @@ class ListView{
 			<input type=\"date\" name='liste_date'><br>
 			<label for=\"dateExp\">Propriétaire de la liste: </label>
 			<input type=\"text\" name='liste_proprietaire' value=$id><br>
+			<label for=\"checkbox\">Publique: </label><br>
+			<input type=\"checkbox\" name=\"liste_publique\" value = '1'><br>
 			<input type=\"submit\" value=\"Valider\">
 			</form></div>");
 		Outils::footerHTML();
@@ -80,6 +95,8 @@ class ListView{
 			<input type=\"date\" name='liste_date' value = '$list->expiration'><br>
 			<label for=\"dateExp\">Propriétaire de la liste: </label>
 			<input type=\"text\" name='liste_proprietaire' value=$id><br>
+			<label for=\"checkbox\">Publique: </label><br>
+			<input type=\"checkbox\" name=\"liste_publique\" value ='1' ><br>
 			<input type=\"submit\" value=\"Modifier\">
 			</form>");
 		Outils::footerHTML();

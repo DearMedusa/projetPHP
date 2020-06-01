@@ -33,6 +33,7 @@ class UserView{
     
     echo("<div class ='cadre'>");
     echo("<a id='inscriptionLink' href='".$app->urlFor('allItems')."'>Consulter les objets existants</a>");
+    echo("<a href='".$app->urlFor('affPubList')."'>Afficher les listes publiques</a>");
     echo("</div>");
 
     Outils::footerHTML();

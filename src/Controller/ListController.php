@@ -16,6 +16,7 @@
       $list->description = $slim->request->post('liste_description');
       $list->user_id = $slim->request->post('liste_proprietaire');
       $list->expiration = $slim->request->post('liste_date');
+      $list->publique = $slim->request->post('liste_publique');
       $list->save();
     }
 
@@ -31,6 +32,13 @@
       $view::affModFormList($id);
     }
 
+    // Appelle l'affichage de toutes les listes publiques
+    function affichageAllPublic(){
+      $view=new ListView();
+      $list = Liste::where(['publique' => 1])->get();
+      $view::affichageAllPublic($list);
+    }
+
     // Modifie une ligne à la base de donnée dans la table liste
     function modifierList($id){
       $slim = \Slim\Slim::getInstance();
@@ -38,6 +46,7 @@
       $list->titre = $slim->request->post('liste_titre');
       $list->description = $slim->request->post('liste_description');;
       $list->expiration = $slim->request->post('liste_date');
+      $list->publique = $slim->request->post('liste_publique');
       $list->save();
     }
 
