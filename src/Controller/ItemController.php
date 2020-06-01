@@ -57,6 +57,7 @@
         $item->descr = $slim->request->post('item_description');
         $item->liste_id = $slim->request->post('liste_id');
         $item->tarif = $slim->request->post('item_tarif');
+        $item->lien = $slim->request->post('item_lien');
         $item->save();
       }
 
@@ -68,6 +69,7 @@
       $item->descr = $slim->request->post('itemMod_description');
       //$item->img = $slim->request->post('itemMod_img');
       $item->tarif = $slim->request->post('itemMod_tarif');
+      $item->lien = $slim->request->post('item_lien');
       $item->save();
     }
 
